@@ -22,8 +22,8 @@ require_once '../services/conection.php';
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body class="menu">
-    <div class="region-inicio flex-cv">
+<body class="tabla-admin">
+    <div class="region-admin flex-cv">
         <table>
             <thead>
                 <tr><form action="./historial.php" method="POST">
@@ -99,15 +99,6 @@ require_once '../services/conection.php';
         </div>
     </div>
 
-
-    <div class="burger-menu" id="burger-menu">
-        <input type="checkbox" href="#"  class="menu-open" name="menu-open" id="menu-open"/>
-        <label class="menu-open-button" for="menu-open">
-            <span class="hamburger hamburger-1"></span>
-            <span class="hamburger hamburger-2"></span>
-            <span class="hamburger hamburger-3"></span>
-        </label>
-    </div>
     
 </body>
 </html>
