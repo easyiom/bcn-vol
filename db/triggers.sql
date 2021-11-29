@@ -13,21 +13,7 @@ DELIMITER $$
     END $$
 DELIMITER ;
 
--- Segunda Manera
-DELIMITER $$
-    CREATE TRIGGER ControlEstat BEFORE INSERT ON `tbl_inscri`
-    FOR EACH ROW
-    BEGIN
-        IF((SELECT count(*) FROM tbl_inscri WHERE id_user = NEW.id_user)=1)
-            THEN
-                UPDATE tbl_events SET estat_event = "Lleno" WHERE id_events = NEW.id_events;
-        END IF;
-    END $$
-DELIMITER ;
 
---Insert
-INSERT INTO `tbl_events` (`nom_events`, `data_ini_event`, `data_fi_event`, `adre_event`, `desc_event`, `ubi_event`, `capac_event`, `estat_event`, `foto_event`) VALUES
-('Carrera Solidaria', '2021-12-16', '2021-12-24', 'C. Esteve Cardelus', 'Evento solidario en contra de las enfermedades respiratorias', 'Sant Celoni', 1, 'Activo', NULL)
 
 
 
