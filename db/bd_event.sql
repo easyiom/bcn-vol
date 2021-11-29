@@ -3,7 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
+
 -- Tiempo de generación: 29-11-2021 a las 15:54:25
+
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 7.4.24
 
@@ -19,9 +21,11 @@ SET time_zone = "+00:00";
 
 --
 -- Base de datos: `bd_event`
---
 
+--	
+   CREATE DATABASE bd_event;
 -- --------------------------------------------------------
+   USE bd_event;
 
 --
 -- Estructura de tabla para la tabla `tbl_events`
@@ -35,6 +39,7 @@ CREATE TABLE `tbl_events` (
   `adre_event` varchar(150) COLLATE utf8mb4_spanish_ci NOT NULL,
   `desc_event` text COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `ubi_event` varchar(50) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+
   `capac_event` int(4) DEFAULT NULL,
   `estat_event` enum('Activo','Lleno') COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `foto_event` varchar(100) COLLATE utf8mb4_spanish_ci DEFAULT NULL
@@ -60,6 +65,7 @@ CREATE TABLE `tbl_inscri` (
   `id_events` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+
 --
 -- Disparadores `tbl_inscri`
 --
@@ -76,6 +82,7 @@ CREATE TRIGGER `ControlEstat` BEFORE INSERT ON `tbl_inscri` FOR EACH ROW BEGIN
     END
 $$
 DELIMITER ;
+
 
 -- --------------------------------------------------------
 
@@ -121,9 +128,11 @@ CREATE TABLE `tbl_usuari` (
 -- Volcado de datos para la tabla `tbl_usuari`
 --
 
+
 INSERT INTO `tbl_usuari` (`id_user`, `email_user`, `pass_user`, `nom_user`, `cognom_user`, `dni_user`, `data_naix_user`, `sexe_user`, `telf_user`, `foto_user`, `rol_user`) VALUES
 (2, 'isaac@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 'Isaac', 'Ortiz', '0000000Ç', '2001-05-11', 'Hombre', '666666696', NULL, 1),
 (3, 'raul@fje.edu', '81dc9bdb52d04dc20036dbd8313ed055', 'Raul', 'Santacruz', '0000000R', '2001-12-16', 'Hombre', '666666696', NULL, 1);
+
 
 --
 -- Índices para tablas volcadas
@@ -164,7 +173,9 @@ ALTER TABLE `tbl_usuari`
 -- AUTO_INCREMENT de la tabla `tbl_events`
 --
 ALTER TABLE `tbl_events`
+
   MODIFY `id_events` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_inscri`
