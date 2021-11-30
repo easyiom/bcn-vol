@@ -60,7 +60,8 @@ require_once '../services/conection.php';
                 <div class="form-body">
                 <h3>Apuntarse a evento <span class="numeroEj"></span></h3>
     
-            <form class="" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
+            <form class="" id="apunt-event" action="../procedures/inscripcion.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id_events" value="<?php echo $id_evento; ?>">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre">
                 <label for="apellido">Apellidos</label>
@@ -88,9 +89,10 @@ require_once '../services/conection.php';
                 <input type="submit">
             </form>
             <div class="login">
-                <form action="">
-                    <input type="email" name="" id="">
-                    <input type="password" name="" id="">
+                <form action="../procedures/ins-user-creado.php" method="POST">
+                    <input type="email" name="email_user" id="email_user">
+                    <input type="password" name="pass_user" id="pass_user">
+                    <input type="submit">
                 </form>
             </div>
 

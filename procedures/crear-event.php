@@ -37,6 +37,6 @@
         }
     }catch(PDOException $e){
          echo $e->getMessage();
-         header("Location:../view/ver.php");
+         header("Location:../view/inicio.php");
     }
 ?>
