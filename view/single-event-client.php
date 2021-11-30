@@ -22,19 +22,11 @@ require_once '../services/conection.php';
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-<?php 
-$event=$pdo->prepare("SELECT * from tbl_events");
-                $event->execute();
-                $event=$event->fetchAll(PDO::FETCH_ASSOC);
-?>
 <body class="menu">
     <div class="region-inicio">
     <ul class="cards">
-<?php foreach ($event as $event) { ?>
-
-    <li>
-            <!-- meter id con php  en el data id -->
-            <div data-id="<?php echo $event['id_events']; ?>" class="card btn-abrirPop">
+        <li>
+            <a href="" class="card">
                 <!-- la foto -->
                 <img src="../media/img/focsartificials.jpg" class="header-image" alt="" />
                 <div class="c-overlay">
@@ -43,23 +35,20 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                         
                         <div class="h-text">
                             <!-- titulo del evento -->
-                            <h3 class="title"><?php echo $event['nom_events']; ?></h3> 
+                            <h3 class="title">Festa Major de Vallvidrera</h3> 
                             <!-- direccion -->
-                            <span class="tagline"><?php echo $event['adre_event']; ?></span>  
+                            <span class="tagline">Calle de la Sarszuela</span>  
                             <!-- fecha ini y fecha final-->
-                            <span class="status"><?php echo $event['data_ini_event']; ?> a <?php echo $event['data_fi_event']; ?></span>
+                            <span class="status">23 de set a 10 Octubre</span>
                         </div>
                     </div>
                     <div class="description">
                         <!-- descripcion 250 caracteres -->
-                        <p><?php echo $event['desc_event']; ?></p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis? asdfqq.</p>
                     </div>
                 </div>
-            </div>
+            </a>      
         </li>
-
-    <?php } ?>
-       
     </ul>
         <!-- <table>
             <thead>
@@ -97,55 +86,39 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                 <div class="form-body">
                 <h3>Apuntarse a evento <span class="numeroEj"></span></h3>
     
-
-            
-            <details>
-                <summary>No tengo cuenta</summary>
-                <form class="crear-inscri" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="id-event" class='id-event'>
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre">
-                    <label for="apellido">Apellidos</label>
-                    <input type="text" name="apellido">
-                    <label for="edad">Fecha de nacimiento</label>
-                    <input type="date" name="edad">
-                    <label for="sexe">Sexo</label>
-                    <div>
-                        <!-- se podria cojer de la base de datos -->
-                        <input type="radio" name="sexe" value="Hombre">
-                        <input type="radio" name="sexe" value="Mujer">
-                        <input type="radio" name="sexe" value="Otro">
-                    </div>
-                    <label for="dni">DNI</label>
-                    <input type="text" size="10" name="dni">
-                    <label for="telf">Teléfono</label>
-                    <input type="number" name="telf">
-                    <label for="email">Email</label>
-                    <input type="email" name="email">
-                    <label for="foto">Foto (opcional)</label>
-                    <input type="file" name="foto">
-                    <label for="contrasenya">Quieres crearte una cuenta?</label>
-                    <input class='contrasenha' type="checkbox" name="contrasenya">
-                    <div class="content-password" style='display: none'>
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password">
-                    </div>
-                    <input type="submit">
-                </form>
-            </details>
-            <details>
-                <summary>Tengo cuenta</summary>
-                <div class="login">
-                <form class='crear-inscri' action="">
-                    <label for="email">Email</label>
-                    <input type="email" name='email'>
-                    <label for="password">Contraseña</label>
-                    <input type="password">
-
+            <form class="" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre">
+                <label for="apellido">Apellidos</label>
+                <input type="text" name="apellido">
+                <label for="edad">Fecha de nacimiento</label>
+                <input type="date" name="edad">
+                <label for="sexe">Sexo</label>
+                <div>
+                    <!-- se podria cojer de la base de datos -->
+                    <input type="radio" name="sexe" value="Hombre">
+                    <input type="radio" name="sexe" value="Mujer">
+                    <input type="radio" name="sexe" value="Otro">
+                </div>
+                <label for="dni">DNI</label>
+                <input type="text" size="10" name="dni">
+                <label for="telf">Teléfono</label>
+                <input type="number" name="telf">
+                <label for="email">Email</label>
+                <input type="email" name="email">
+                <label for="foto">Foto (opcional)</label>
+                <input type="file" name="foto">
+                <label for="contrasenya">Quieres crearte una cuenta?</label>
+                <input type="checkbox" name="contrasenya">
+                <div class="login"></div>
+                <input type="submit">
+            </form>
+            <div class="login">
+                <form action="">
+                    <input type="email" name="" id="">
+                    <input type="password" name="" id="">
                 </form>
             </div>
-            </details>
-            
 
                 </div>
             </div>

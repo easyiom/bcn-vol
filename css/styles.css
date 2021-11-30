@@ -67,7 +67,6 @@
 
 ::-webkit-scrollbar-thumb {
   background: #024661;
-  border-radius: 15px;
 }
 
 ::-webkit-scrollbar-track {
@@ -94,6 +93,124 @@ body.menu {
 
 .region-inicio {
   min-height: 100vh;
+}
+
+:root {
+  --surface-color: #fff;
+  --curve: 40;
+}
+
+.cards {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 4rem 6vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  position: relative;
+  display: block;
+  height: 20rem;
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+}
+
+.card:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+}
+
+.card:hover .c-overlay {
+  bottom: 0px;
+}
+
+.card .header-image {
+  width: 100%;
+  height: auto;
+}
+
+.card .c-overlay {
+  position: absolute;
+  bottom: -11rem;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  min-height: 18rem;
+  border-radius: calc(var(--curve) * 1px);
+  background-color: var(--surface-color);
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.card .c-overlay .c-header {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;
+  background-color: var(--surface-color);
+  -webkit-transition: .2s ease-in-out;
+  transition: .2s ease-in-out;
+}
+
+.card .c-overlay .c-header .arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  z-index: 1;
+}
+
+.card .c-overlay .c-header .arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}
+
+.card .c-overlay .c-header .h-text .title {
+  font-size: 1em;
+  margin: 0 0 .3em;
+  color: #6A515E;
+}
+
+.card .c-overlay .c-header .h-text .tagline {
+  display: block;
+  margin: 1em 0;
+  font-family: "MockFlowFont";
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card .c-overlay .c-header .h-text .status {
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card .c-overlay .description {
+  padding: 0 2em 2em;
+  margin: 0;
+  color: #D7BDCA;
+  border-radius: 0px;
+  font-family: "MockFlowFont";
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card .c-overlay .description p {
+  min-height: 146px;
 }
 
 table {

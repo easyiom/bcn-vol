@@ -26,19 +26,44 @@ require_once '../services/conection.php';
     <div class="region-admin flex-cv">
         <table>
             <thead>
-                <tr><form action="./historial.php" method="POST">
+                <tr><form action="./tabla-admin.php" method="POST">
+                        <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
-                        <th><input type="date" id="" name="horaini" placeholder="Inicio"></th>
-                        <th><input type="date" id="" value="" name="horafi" placeholder="Final"></th>
-                        <th><input type="text" id="" name="datos_res" placeholder="Nombre reserva"></th>
+                        <th><input type="email" id="email" name="email" placeholder="email"></th>
+                        <th><input type="text" id="" name="nom" placeholder="Nom"></th>
+                        <th><input type="text" id="" name="cognom" placeholder="Cognom"></th>
+                        <th><input type="text" id="" name="dni" placeholder="DNI"></th>
+                        <th><input type="date" id="" name="dataNaix" placeholder="Data naixament"></th>
+                        <th>
+                            <select>
+                                <option value="">Todos</option>
+                                <option value="">Hombre</option>
+                                <option value="">Mujer</option>
+                                <option value="">Otros</option>
+                            </select>
+                        </th>
+                        <th><input type="tel" name="" id=""></th>
+                        <th>
+                            <select>
+                                <option value="">Todos</option>
+                                <option value="">Hombre</option>
+                                <option value="">Mujer</option>
+                                <option value="">Otros</option>
+                            </select>
+                        </th>
                     </form>
                 </tr>
                 <tr>
+                    <th>foto</th>
                     <th>Id</th>
-                    <th>Nom event</th>
-                    <th>Inici</th>
-                    <th>Fi</th>
-                    <th>Direcció</th>
+                    <th>email</th>
+                    <th>Nom</th>
+                    <th>Cognom</th>
+                    <th>dni</th>
+                    <th>data naix</th>
+                    <th>sexe</th>
+                    <th>telf</th>
+                    <th>rol</th>
                 </tr>  
             </thead>
             <tbody>
@@ -46,7 +71,12 @@ require_once '../services/conection.php';
                 <td></td>
                 <td></td>
                 <td></td>
-                
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                 <td><button class="btn-abrirPop">Abrir Popup</button></td>
             </tbody>
         </table>
