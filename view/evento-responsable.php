@@ -55,45 +55,29 @@ require_once '../services/conection.php';
     <div class="overlay" id="overlay">
         <div class="popup" id="popup">
             <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
-            
             <div class="contenedor-popup">
                 <div class="form-body">
-                <h3>Apuntarse a evento <span class="numeroEj"></span></h3>
-    
-            <form class="" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre">
-                <label for="apellido">Apellidos</label>
-                <input type="text" name="apellido">
-                <label for="edad">Fecha de nacimiento</label>
-                <input type="date" name="edad">
-                <label for="sexe">Sexo</label>
-                <div>
-                    <!-- se podria cojer de la base de datos -->
-                    <input type="radio" name="sexe" value="Hombre">
-                    <input type="radio" name="sexe" value="Mujer">
-                    <input type="radio" name="sexe" value="Otro">
-                </div>
-                <label for="dni">DNI</label>
-                <input type="text" size="10" name="dni">
-                <label for="telf">Teléfono</label>
-                <input type="number" name="telf">
-                <label for="email">Email</label>
-                <input type="email" name="email">
-                <label for="foto">Foto (opcional)</label>
-                <input type="file" name="foto">
-                <label for="contrasenya">Quieres crearte una cuenta?</label>
-                <input type="checkbox" name="contrasenya">
-                <div class="login"></div>
-                <input type="submit">
-            </form>
-            <div class="login">
-                <form action="">
-                    <input type="email" name="" id="">
-                    <input type="password" name="" id="">
-                </form>
-            </div>
-
+                    <h3>Crear evento</h3>
+                    <form class="" id="crear-event" action="../procedures/" method="POST" enctype="multipart/form-data">
+                        <!-- SI troves a faltar algun camp, metele amor -->
+                        <label for="nom">Nombre</label>
+                        <input type="text" name="nom">
+                        <label for="ini">Inici</label>
+                        <input type="date" name="ini">
+                        <label for="fi">Final</label>
+                        <input type="date" name="fi">
+                        <label for="adre">Dirección</label>
+                        <input type="text" name="adre">
+                        <label for="desc">Descripción</label>
+                        <input type="texarea" size="250" name="desc">
+                        <label for="ubi">Ubicación</label>
+                        <input type="texarea" size="250" name="ubi">
+                        <label for="cap">Capacidad</label>
+                        <input type="number" name="cap">
+                        <label for="foto">Foto</label>
+                        <input type="file" name="foto">
+                        <input type="submit">
+                    </form>
                 </div>
             </div>
         </div>

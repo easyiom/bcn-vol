@@ -22,48 +22,49 @@ require_once '../services/conection.php';
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
-<body class="tabla-admin">
-    <div class="region-admin flex-cv">
-        <table>
+<body class="menu">
+    <div class="region-inicio">
+    <ul class="cards">
+        <li>
+            <a href="" class="card">
+                <!-- la foto -->
+                <img src="../media/img/focsartificials.jpg" class="header-image" alt="" />
+                <div class="c-overlay">
+                    <div class="c-header">
+                        <svg class="arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                        
+                        <div class="h-text">
+                            <!-- titulo del evento -->
+                            <h3 class="title">Festa Major de Vallvidrera</h3> 
+                            <!-- direccion -->
+                            <span class="tagline">Calle de la Sarszuela</span>  
+                            <!-- fecha ini y fecha final-->
+                            <span class="status">23 de set a 10 Octubre</span>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <!-- descripcion 250 caracteres -->
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis? asdfqq.</p>
+                    </div>
+                </div>
+            </a>      
+        </li>
+    </ul>
+        <!-- <table>
             <thead>
-                <tr><form action="./tabla-admin.php" method="POST">
-                        <th></th>
+                <tr><form action="./historial.php" method="POST">
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
-                        <th><input type="email" id="email" name="email" placeholder="email"></th>
-                        <th><input type="text" id="" name="nom" placeholder="Nom"></th>
-                        <th><input type="text" id="" name="cognom" placeholder="Cognom"></th>
-                        <th><input type="text" id="" name="dni" placeholder="DNI"></th>
-                        <th><input type="date" id="" name="dataNaix" placeholder="Data naixament"></th>
-                        <th>
-                            <select>
-                                <option value="">Todos</option>
-                                <option value="">Hombre</option>
-                                <option value="">Mujer</option>
-                                <option value="">Otros</option>
-                            </select>
-                        </th>
-                        <th><input type="tel" name="" id=""></th>
-                        <th>
-                            <select>
-                                <option value="">Todos</option>
-                                <option value="">Hombre</option>
-                                <option value="">Mujer</option>
-                                <option value="">Otros</option>
-                            </select>
-                        </th>
+                        <th><input type="date" id="" name="horaini" placeholder="Inicio"></th>
+                        <th><input type="date" id="" value="" name="horafi" placeholder="Final"></th>
+                        <th><input type="text" id="" name="datos_res" placeholder="Nombre reserva"></th>
                     </form>
                 </tr>
                 <tr>
-                    <th>foto</th>
                     <th>Id</th>
-                    <th>email</th>
-                    <th>Nom</th>
-                    <th>Cognom</th>
-                    <th>dni</th>
-                    <th>data naix</th>
-                    <th>sexe</th>
-                    <th>telf</th>
-                    <th>rol</th>
+                    <th>Nom event</th>
+                    <th>Inici</th>
+                    <th>Fi</th>
+                    <th>Direcció</th>
                 </tr>  
             </thead>
             <tbody>
@@ -71,15 +72,10 @@ require_once '../services/conection.php';
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                
                 <td><button class="btn-abrirPop">Abrir Popup</button></td>
             </tbody>
-        </table>
+        </table> -->
     </div>
 
     <div class="overlay" id="overlay">
@@ -129,6 +125,15 @@ require_once '../services/conection.php';
         </div>
     </div>
 
+
+    <div class="burger-menu" id="burger-menu">
+        <input type="checkbox" href="#"  class="menu-open" name="menu-open" id="menu-open"/>
+        <label class="menu-open-button" for="menu-open">
+            <span class="hamburger hamburger-1"></span>
+            <span class="hamburger hamburger-2"></span>
+            <span class="hamburger hamburger-3"></span>
+        </label>
+    </div>
     
 </body>
 </html>
