@@ -97,6 +97,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                 <div class="form-body">
                 <h3>Apuntarse a evento <span class="numeroEj"></span></h3>
     
+
             
             <details>
                 <summary>No tengo cuenta</summary>
@@ -140,6 +141,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                     <input type="email" name='email'>
                     <label for="password">Contraseña</label>
                     <input type="password">
+
                 </form>
             </div>
             </details>

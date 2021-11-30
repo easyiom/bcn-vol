@@ -57,6 +57,7 @@ require_once '../services/conection.php';
             <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
             <div class="contenedor-popup">
                 <div class="form-body">
+
                     <h3>Crear evento</h3>
                     <form class="" id="crear-event" action="../procedures/" method="POST" enctype="multipart/form-data">
                         <!-- SI troves a faltar algun camp, metele amor -->
@@ -78,6 +79,7 @@ require_once '../services/conection.php';
                         <input type="file" name="foto">
                         <input type="submit">
                     </form>
+
                 </div>
             </div>
         </div>
