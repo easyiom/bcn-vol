@@ -21,8 +21,10 @@ require_once '../services/conection.php';
     <script type="text/javascript" src="../js/js.js"></script>
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/menu.css">
 </head>
 <?php 
+
 $event=$pdo->prepare("SELECT * from tbl_events");
                 $event->execute();
                 $event=$event->fetchAll(PDO::FETCH_ASSOC);
@@ -34,7 +36,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
 
     <li>
             <!-- meter id con php  en el data id -->
-            <div data-id="<?php echo $event['id_events']; ?>" class="card btn-abrirPop">
+            <div data-id="<?php echo $event['id_events']; ?>" class="card btn-abrirPop btn-abrirPop1">
                 <!-- la foto -->
                 <img src="../media/img/focsartificials.jpg" class="header-image" alt="" />
                 <div class="c-overlay">
@@ -61,98 +63,34 @@ $event=$pdo->prepare("SELECT * from tbl_events");
     <?php } ?>
        
     </ul>
-        <!-- <table>
-            <thead>
-                <tr><form action="./historial.php" method="POST">
-                        <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
-                        <th><input type="date" id="" name="horaini" placeholder="Inicio"></th>
-                        <th><input type="date" id="" value="" name="horafi" placeholder="Final"></th>
-                        <th><input type="text" id="" name="datos_res" placeholder="Nombre reserva"></th>
-                    </form>
-                </tr>
-                <tr>
-                    <th>Id</th>
-                    <th>Nom event</th>
-                    <th>Inici</th>
-                    <th>Fi</th>
-                    <th>Direcció</th>
-                </tr>  
-            </thead>
-            <tbody>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                
-                <td><button class="btn-abrirPop">Abrir Popup</button></td>
-            </tbody>
-        </table> -->
+        
     </div>
 
-    <div class="overlay" id="overlay">
-        <div class="popup" id="popup">
-            <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
-            
-            <div class="contenedor-popup">
-                <div class="form-body">
-                <h3>Apuntarse a evento <span class="numeroEj"></span></h3>
+
+<div class="leftMenu" id="leftMenu">
+    <!-- que aparezca uno u otro dependiendo si hay sesion o no -->
     
-
-            
-            <details>
-                <summary>No tengo cuenta</summary>
-                <form class="crear-inscri" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="id-event" class='id-event'>
-                    <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre">
-                    <label for="apellido">Apellidos</label>
-                    <input type="text" name="apellido">
-                    <label for="edad">Fecha de nacimiento</label>
-                    <input type="date" name="edad">
-                    <label for="sexe">Sexo</label>
-                    <div>
-                        <!-- se podria cojer de la base de datos -->
-                        <input type="radio" name="sexe" value="Hombre">
-                        <input type="radio" name="sexe" value="Mujer">
-                        <input type="radio" name="sexe" value="Otro">
-                    </div>
-                    <label for="dni">DNI</label>
-                    <input type="text" size="10" name="dni">
-                    <label for="telf">Teléfono</label>
-                    <input type="number" name="telf">
-                    <label for="email">Email</label>
-                    <input type="email" name="email">
-                    <label for="foto">Foto (opcional)</label>
-                    <input type="file" name="foto">
-                    <label for="contrasenya">Quieres crearte una cuenta?</label>
-                    <input class='contrasenha' type="checkbox" name="contrasenya">
-                    <div class="content-password" style='display: none'>
-                        <label for="password">Contraseña</label>
-                        <input type="password" name="password">
-                    </div>
-                    <input type="submit">
-                </form>
-            </details>
-            <details>
-                <summary>Tengo cuenta</summary>
-                <div class="login">
-                <form class='crear-inscri' action="">
-                    <label for="email">Email</label>
-                    <input type="email" name='email'>
-                    <label for="password">Contraseña</label>
-                    <input type="password">
-
-                </form>
-            </div>
-            </details>
-            
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <button type="submit" title="Cerrar sesión" class="btn-micromenu color btn-abrirPop btn-abrirPop2"><i class="far fa-sign-out"></i><p>Iniciar sesion</p></button>
+    <form action="../procedures/logout.proc.php" method="post">
+        <button title="Cerrar sesión" class="btn-micromenu color"><i class="far fa-sign-out"></i><p>Logout</p></button>
+    </form>
+    
+    <button title="Perfil" class="btn-micromenu color" ><i class="fas fa-user"></i><p>Perfil</p></button>
+    <!-- que aparezca dependiendo si hay sesion o no -->
+    <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-home"></i><p>Inicio</p></button>
+    <!-- que aparezca uno o otro dependiendo ROLES -->
+    <?php if(isset($_COOKIE["rol"]) && $_COOKIE["rol"]=="SuperUser"){ ?>
+        <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-users-cog"></i><p>admin</p></button>
+    <?php }else{} ?>
+    <?php if(isset($_COOKIE["rol"]) && ($_COOKIE["rol"]=="Responsable" || $_COOKIE["rol"]=="SuperUser")){ ?>
+        <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-calendar-alt"></i><p>G.Event</p></button>
+    <?php }else{} ?>
+</div>
+       
 
 
+
+<div class="btn-burger">
     <div class="burger-menu" id="burger-menu">
         <input type="checkbox" href="#"  class="menu-open" name="menu-open" id="menu-open"/>
         <label class="menu-open-button" for="menu-open">
@@ -161,6 +99,96 @@ $event=$pdo->prepare("SELECT * from tbl_events");
             <span class="hamburger hamburger-3"></span>
         </label>
     </div>
+</div>
+<aside class="bottomMenu" id="bottomMenu">
+    <div class="bot-screen">
+        <button title="Perfil" class="btn-rowscreen color" ><i class="fas fa-user"></i><p>Perfil</p></button>
+        <button title="Inicio" class="btn-rowscreen color" ><i class="fas fa-home"></i><p>Inicio</p></button>
+        <?php if(isset($_COOKIE["rol"]) && $_COOKIE["rol"]=="SuperUser"){ ?>
+            <button title="Inicio" class="btn-rowscreen color" ><i class="fas fa-users-cog"></i><p>admin</p></button>
+        <?php }else{} ?>
+        <button title="Inicio" class="btn-rowscreen color" ><i class="fas fa-calendar-alt"></i><p>G.Event</p></button>
+    </div>
+    <div class="bot-tool" id="bot-tool">
+        <div><button class="btn-rowtool color" onclick="deleter()"><i class="far fa-minus-hexagon" aria-hidden="true"></i></button></div>
+        <div><button class="btn-rowtool color" id="btn-crear2"><i class="far fa-plus-hexagon" aria-hidden="true"></i></button></div>
+        <div><button class="btn-rowtool color" ><i class="fal fa-file-csv" aria-hidden="true"></i></button></div>
+    </div>
+</aside>
+    <div class="overlay" id="overlay">
+        <div class="popup" id="popup">
+            <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
+            
+            <div class="contenedor-popup cont-1">
+                <div class="form-body">
+                    <h3>Apuntarse a evento </h3>
+                    <details>
+                        <summary>No tengo cuenta</summary>
+                        <form class="crear-inscri" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id-event" class='id-event'>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre">
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" name="apellido">
+                            <label for="edad">Fecha de nacimiento</label>
+                            <input type="date" name="edad">
+                            <label for="sexe">Sexo</label>
+                            <div>
+                                <!-- se podria cojer de la base de datos -->
+                                <input type="radio" name="sexe" value="Hombre">
+                                <input type="radio" name="sexe" value="Mujer">
+                                <input type="radio" name="sexe" value="Otro">
+                            </div>
+                            <label for="dni">DNI</label>
+                            <input type="text" size="10" name="dni">
+                            <label for="telf">Teléfono</label>
+                            <input type="number" name="telf">
+                            <label for="email">Email</label>
+                            <input type="email" name="email">
+                            <label for="foto">Foto (opcional)</label>
+                            <input type="file" name="foto">
+                            <label for="contrasenya">Quieres crearte una cuenta?</label>
+                            <input class='contrasenha' type="checkbox" name="contrasenya">
+                            <div class="content-password" style='display: none'>
+                                <label for="password">Contraseña</label>
+                                <input type="password" name="password">
+                            </div>
+                            <input type="submit">
+                        </form>
+                    </details>
+                    <details>
+                        <summary>Tengo cuenta</summary>
+                        <div class="login">
+                            <form class='crear-inscri' action="">
+                                <label for="email">Email</label>
+                                <input type="email" name='email'>
+                                <label for="password">Contraseña</label>
+                                <input type="password" name='password'>
+                                <input type="submit">
+                            </form>
+                        </div>
+                    </details>
+            
+
+                </div>
+            </div>
+            <div class="contenedor-popup cont-2">
+            <h3>Iniciar sesion</h3>
+                <div class="form-body">
+                    <form class='' action="../procedures/login.proc.php" method="post">
+                        <label for="username">Email</label>
+                        <input type="email" name='username'>
+                        <label for="password">Contraseña</label>
+                        <input type="password" name='password'>
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
     
 </body>
 </html>
