@@ -91,6 +91,10 @@ body.menu {
   background: #172A3A;
 }
 
+body.tabla-responsable {
+  background: #172A3A;
+}
+
 .region-inicio {
   min-height: 100vh;
 }
@@ -360,6 +364,7 @@ tbody td:hover:before {
 .popup .contenedor-popup {
   opacity: 0;
   margin-top: 50px;
+  display: none;
 }
 
 .popup button,
@@ -368,6 +373,76 @@ tbody td:hover:before {
   padding: 10px 15px;
   background: #09BC8A;
   color: #508991;
+}
+
+.bottomMenu {
+  visibility: hidden;
+  padding-top: 10px;
+  position: fixed;
+  bottom: -175px;
+  z-index: 999;
+  height: 175px;
+  background-color: rgba(53, 53, 53, 0.8);
+  border-radius: 4px 4px 0px 0px;
+  width: 100%;
+  -webkit-transition: .3s ease bottom;
+  transition: .3s ease bottom;
+}
+
+.bottomMenu .bot-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 5px;
+}
+
+.bottomMenu .bot-tool {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  gap: 0px;
+  overflow-x: auto;
+}
+
+@supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+  .bottomMenu {
+    webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    background-color: rgba(53, 53, 53, 0.8);
+  }
+  .containerMenu {
+    webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    background-color: rgba(53, 53, 53, 0.8);
+  }
+  /*.leftMenu {
+        webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba(53, 53, 53, 0.8);
+    }*/
 }
 
 .burger-menu {
@@ -385,6 +460,18 @@ tbody td:hover:before {
 }
 
 .burger-menu input {
+  display: none;
+}
+
+.burger-menu2 {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  -webkit-transition: .3s ease bottom;
+  transition: .3s ease bottom;
+}
+
+.burger-menu2 input {
   display: none;
 }
 

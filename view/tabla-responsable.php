@@ -22,32 +22,66 @@ require_once '../services/conection.php';
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+<?php 
+$event=$pdo->prepare("SELECT * from tbl_events");
+                $event->execute();
+                $event=$event->fetchAll(PDO::FETCH_ASSOC);
+?>
 <body class="tabla-responsable">
     <div class="region-responsable flex-cv">
         <table>
             <thead>
                 <tr><form action="./historial.php" method="POST">
+                        <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
+                        <th><input type="text" id="" name="nom_events" placeholder="Nom"></th>
                         <th><input type="date" id="" name="horaini" placeholder="Inicio"></th>
                         <th><input type="date" id="" value="" name="horafi" placeholder="Final"></th>
-                        <th><input type="text" id="" name="datos_res" placeholder="Nombre reserva"></th>
+                        <th><input type="text" id="" name="adre_event" placeholder="direccio"></th>
+                        <th><input type="number" id="" name="capac_event" placeholder="Capacitat"></th>
+                        <th>
+                            <select name="estat" id="">
+                                <option value=""></option>
+                                <option value="Activo">Activo</option>
+                                <option value="Lleno">Lleno</option>
+                            </select>
+                        </th>
                     </form>
                 </tr>
                 <tr>
+                    <th>Foto</th>
                     <th>Id</th>
                     <th>Nom event</th>
                     <th>Inici</th>
                     <th>Fi</th>
                     <th>Direcció</th>
+                    <th>Capacitat</th>
+                    <th>Estat</th>
                 </tr>  
             </thead>
             <tbody>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                
-                <td><button class="btn-abrirPop">Abrir Popup</button></td>
+            <?php foreach ($event as $event) { ?>
+                <tr>
+                    <td><?php echo $event['foto_event']; ?></td>
+                    <td><?php echo $event['id_events']; ?></td>
+                    <td><?php echo $event['nom_events']; ?></td>
+                    <td><?php echo $event['data_ini_event']; ?></td>
+                    <td><?php echo $event['data_fi_event']; ?></td>
+                    <td><?php echo $event['adre_event']; ?></td>
+                    <td><?php echo $event['capac_event']; ?></td>
+                    <td><?php echo $event['estat_event']; ?></td>
+                    
+
+                    <td><button class="btn-abrirPop"><i class="fas fa-edit"></i></button></td>
+                    <td>
+                        <form action="resp-cookie-event.php" method="POST">
+                            <input type="hidden" value="<?php echo $event['id_events']; ?>" name="id_events">
+                            <input type="submit" name="enviar" value='ver'>
+                        </form>
+                        
+                    </td>
+                </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
@@ -58,7 +92,7 @@ require_once '../services/conection.php';
             <div class="contenedor-popup">
                 <div class="form-body">
                     <h3>Crear evento</h3>
-                    <form class="" id="crear-event" action="../procedures/" method="POST" enctype="multipart/form-data">
+                    <form class="" id="crear-event" action="../procedures/crear-event.php" method="POST" enctype="multipart/form-data">
                         <label for="nom">Nombre</label>
                         <input type="text" name="nom">
                         <label for="ini">Inici</label>
