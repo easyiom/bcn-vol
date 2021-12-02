@@ -28,12 +28,12 @@ $event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_eventso");
                 $event->execute();
                 $event=$event->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<body class="menu">
-    <div class="region-inicio flex-cv">
+<body class="event-single">
+    <div class="region-event-single flex-cv">
     <?php foreach ($event as $event) { ?>
 
 
-        <div class="foto-perfil">
+        <div class="foto-event">
             <img style="max-height: 10vh;"
              src="<?php if($event['foto_event']!=null){
                  echo $event['foto_event'];
@@ -47,7 +47,7 @@ $event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_eventso");
                 <input type="submit" value="Canviar img">
             </form>
         </div>
-        <div class="personal-data box-profile">
+        <div class="event-data box-profile">
             <h3>Datos personales</h3>
             <form action="../procedures/event/update-pd-profile.php">
                 <input aria-required="true" required type="hidden" name="id_events" value="<?php echo $event['id_events']; ?>">
