@@ -8,10 +8,12 @@ DELIMITER $$
         IF @estat <> 'Activo'
             THEN SIGNAL SQLSTATE '45000'
                 SET MESSAGE_TEXT = 'Capacitat máxima completa';
+
         ELSEIF @estat = 'Activo' AND @count > @capacidad
             THEN
                 UPDATE tbl_events SET estat_event = 'Lleno' WHERE id_events = NEW.id_events;
         ELSEIF @count = @capacidad
+
             THEN
                 UPDATE tbl_events SET estat_event = 'Lleno' WHERE id_events = NEW.id_events;
         END IF;
