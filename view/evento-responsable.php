@@ -41,19 +41,19 @@ $event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_eventso");
                  echo "../media/img/profile.png";
              }?>" 
              >
-             <form action="../procedures/event/update-foto.php">
+             <form action="../procedures/event/update-foto-event.php" method="POST" enctype="multipart/form-data">
                 <input aria-required="true" required type="hidden" name="id_events" value="<?php echo $event['id_events']; ?>">
-                <input aria-required="true" required type="file" name="foto_event" id="">
+                <input aria-required="true" required type="file" name="foto" id="" accept="image/*">
                 <input type="submit" value="Canviar img">
             </form>
         </div>
         <div class="event-data box-profile">
             <h3>Datos personales</h3>
-            <form action="../procedures/event/update-pd-profile.php">
+            <form action="../procedures/event/update-data-event.php">
                 <input aria-required="true" required type="hidden" name="id_events" value="<?php echo $event['id_events']; ?>">
                 <input aria-required="true" required type="text" name="nom_events" id="" value="<?php echo $event['nom_events']; ?>">
                 
-                <select aria-required="true" required name="sexe_event" id="" value="<?php echo $event['estado_event']; ?>">
+                <select aria-required="true" required name="estat_event" id="" value="<?php echo $event['estado_event']; ?>">
                     <option value="">Selecciona uno</option>
                     <option value="Activo">Activo</option>
                     <option value="Lelno">Lleno</option>
@@ -62,7 +62,7 @@ $event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_eventso");
                 <input aria-required="true" required type="date" name="data_ini_event" id="" value="<?php echo $event['data_ini_event']; ?>">
                 <input aria-required="true" required type="date" name="data_fi_event" id="" value="<?php echo $event['data_fi_event']; ?>">
                 <input aria-required="true" required type="text" name="adre_event" id="adre" value="<?php echo $event['adre_event']; ?>">
-                <input aria-required="true" required type="number" name="capac_event" id="capac" value="<?php echo $event['capac_event']; ?>">
+                <input aria-required="true" required type="number" name="capac_event" readonly id="capac" value="<?php echo $event['capac_event']; ?>">
                 <input aria-required="true" required type="text" name="ubi_event" id="ubi" value="<?php echo $event['ubi_event']; ?>">
                 <input type="submit" value="Actualizar">
             </form>
