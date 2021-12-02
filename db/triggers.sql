@@ -13,7 +13,18 @@ DELIMITER $$
     END $$
 DELIMITER ;
 
-
+DELIMITER $$
+    CREATE TRIGGER ControlInscripcion BEFORE DELETE ON `tbl_inscri`
+    FOR EACH ROW
+    BEGIN
+        SET @count = (SELECT count(*) FROM tbl_inscri WHERE id_events = OLD.id_events);
+        SET @capacidad = (SELECT capac_event FROM tbl_events WHERE id_events = OLD.id_events);
+        IF  @count < @capacidad
+            THEN
+                UPDATE tbl_events SET estat_event = 'Activo' WHERE id_events = OLD.id_events;
+        END IF;
+    END $$;
+DELIMITER ;
 
 
 
