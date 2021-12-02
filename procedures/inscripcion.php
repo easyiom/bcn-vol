@@ -28,7 +28,7 @@ if(isset( $_FILES["foto"] ) && !empty( $_FILES["foto"]["name"] )){
 }else{
     $path = null;
 }
-print_r($path);
+//Siempre Seran USER
 $rol = 3;
 
 $id_evento = $_REQUEST['id-event'];
@@ -133,6 +133,7 @@ if(empty($result)){
     
     
     try{
+        
         $stmt->execute();
         $sql=$pdo->prepare("INSERT INTO tbl_inscri(id_user, id_events) VALUES(?,?)");
             $sql->bindParam(1,$idusu);
