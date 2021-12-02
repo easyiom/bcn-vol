@@ -2,7 +2,7 @@
 
 require_once '../services/conection.php';
 session_start();
-$id_evento=$_COOKIE["id-event"];
+$id_eventso=$_COOKIE["id-event"];
 ?>
 
 
@@ -24,23 +24,53 @@ $id_evento=$_COOKIE["id-event"];
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <?php 
-$event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_evento");
+$event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_eventso");
                 $event->execute();
                 $event=$event->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <body class="menu">
     <div class="region-inicio flex-cv">
     <?php foreach ($event as $event) { ?>
-    <p><?php echo $event['foto_event']; ?></p>
-                    <p><?php echo $event['id_events']; ?></p>
-                    <p><?php echo $event['nom_events']; ?></p>
-                    <p><?php echo $event['data_ini_event']; ?></p>
-                    <p><?php echo $event['data_fi_event']; ?></p>
-                    <p><?php echo $event['adre_event']; ?></p>
-                    <p><?php echo $event['capac_event']; ?></p>
-                    <p><?php echo $event['estat_event']; ?></p>
-                    <p><?php echo $_SESSION['email'];?><p>
-                    <?php } ?>
+
+
+        <div class="foto-perfil">
+            <img style="max-height: 10vh;"
+             src="<?php if($event['foto_event']!=null){
+                 echo $event['foto_event'];
+             }else{
+                 echo "../media/img/profile.png";
+             }?>" 
+             >
+             <form action="../procedures/event/update-foto.php">
+                <input aria-required="true" required type="hidden" name="id_events" value="<?php echo $event['id_events']; ?>">
+                <input aria-required="true" required type="file" name="foto_event" id="">
+                <input type="submit" value="Canviar img">
+            </form>
+        </div>
+        <div class="personal-data box-profile">
+            <h3>Datos personales</h3>
+            <form action="../procedures/event/update-pd-profile.php">
+                <input aria-required="true" required type="hidden" name="id_events" value="<?php echo $event['id_events']; ?>">
+                <input aria-required="true" required type="text" name="nom_events" id="" value="<?php echo $event['nom_events']; ?>">
+                
+                <select aria-required="true" required name="sexe_event" id="" value="<?php echo $event['estado_event']; ?>">
+                    <option value="">Selecciona uno</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Lelno">Lleno</option>
+                    
+                </select>
+                <input aria-required="true" required type="date" name="data_ini_event" id="" value="<?php echo $event['data_ini_event']; ?>">
+                <input aria-required="true" required type="date" name="data_fi_event" id="" value="<?php echo $event['data_fi_event']; ?>">
+                <input aria-required="true" required type="text" name="adre_event" id="adre" value="<?php echo $event['adre_event']; ?>">
+                <input aria-required="true" required type="number" name="capac_event" id="capac" value="<?php echo $event['capac_event']; ?>">
+                <input aria-required="true" required type="text" name="ubi_event" id="ubi" value="<?php echo $event['ubi_event']; ?>">
+                <input type="submit" value="Actualizar">
+            </form>
+        </div>
+
+        <?php } ?>
+
+   
     </div>
 
     
