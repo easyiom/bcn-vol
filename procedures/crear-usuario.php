@@ -2,21 +2,21 @@
     include '../services/conection.php';
     include '../procedures/class/usuario.php';
 
-    // $email = $_REQUEST[''];
-    // if(isset($_REQUEST[''])){
-    //     $password = $_REQUEST[''];
+    // $email = $_REQUEST['email_user'];
+    // if(isset($_REQUEST['pass_user'])){
+    //     $password = $_REQUEST['pass_user'];
     // }
-    // $nombre = $_REQUEST[''];
-    // $apellido = $_REQUEST[''];
-    // $dni = $_REQUEST[''];
-    // $dataNaix = $_REQUEST[''];
-    // $sexo = $_REQUEST[''];
-    // $telf = $_REQUEST[''];
-    // if(isset($_REQUEST[''])){
-    //     $foto =  $_REQUEST[''];
+    // $nombre = $_REQUEST['nom_user'];
+    // $apellido = $_REQUEST['apellido_user'];
+    // $dni = $_REQUEST['dni_user'];
+    // $dataNaix = $_REQUEST['data_naix_user'];
+    // $sexo = $_REQUEST['sexe_user'];
+    // $telf = $_REQUEST['telf_user'];
+    // if(isset($_REQUEST['foto_user'])){
+    //     $foto =  $_REQUEST['foto_user'];
     // }
     // $rol = 3;
-    //$id_evento = $_REQUEST[''];
+    //$id_evento = $_REQUEST['id_events'];
     // $id_evento = 3;
 
     $id = null;
@@ -49,7 +49,6 @@
             }
         }catch(PDOException $e){
             echo $e->getMessage();
-            $error=true;
             unlink($name);
             $pdo->rollBack();
             header("Location:../view/inicio.php");
