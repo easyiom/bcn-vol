@@ -17,9 +17,9 @@
             $pdo->commit();
         }catch(PDOException $e){
             echo $e->getMessage();
-            // header("Location:../../view/inicio.php");
+            header("Location:../../view/inicio.php");
             unlink($path);
             $pdo->rollBack();
         }
-    }//header("Location:../../view/inicio.php");
+    }header("Location:../../view/inicio.php");
 ?>
