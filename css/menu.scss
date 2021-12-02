@@ -399,6 +399,7 @@ $widthButMenuMicro: 77%;
     align-items: center;
     justify-content: center;
     font-size: 0.7em;
+    position: relative;
     &.color {
         @include COLOR3;
     }
@@ -459,6 +460,14 @@ $widthButMenuMicro: 77%;
     width: 75px;
     font-size: 2em;
     box-shadow: 0 4px 1px 0 #3b3b3b00;
+}
+
+.a-menu {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 

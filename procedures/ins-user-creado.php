@@ -25,15 +25,15 @@
         $sql->execute();
         $pdo->commit();
         echo $id;
-        echo "<br>";
+
         echo $id_evento;
-        echo "<br>";
+
         print_r($sql);
-        //header("Location:../view/inicio.php");
+        header("Location:../view/inicio.php");
     }catch(PDOException $e){
         echo $e->getMessage();
         $pdo->rollBack();
-        //header("Location:../view/inicio.php");
+        header("Location:../view/inicio.php");
     }
-    //header("Location:../view/inicio.php");
+    header("Location:../view/inicio.php");
 ?>
