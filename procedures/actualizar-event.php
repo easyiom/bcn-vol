@@ -26,6 +26,7 @@
     // $foto=NULL;
 
     //Preparamos la query que ejecutará el update
+    $pdo->beginTransaction();
     $stmt=$pdo->prepare("UPDATE tbl_events SET nom_events=?, data_ini_event=?, data_fi_event=?, adre_event=?, desc_event=?, ubi_event=?, capac_event=?, estat_event=? ,foto_event=? WHERE id_events=?");
     $stmt->bindParam(1,$nombre);
     $stmt->bindParam(2,$dataIni);
@@ -37,8 +38,15 @@
     $stmt->bindParam(8,$estat);
     $stmt->bindParam(9,$foto);
     $stmt->bindParam(10,$id);
-    $stmt->execute();
-
-    //Al ejecutarse nos envia a inicio
+    try{
+        $stmt->execute();
+        $pdo->commit();
+    }catch(PDOException $e){
+        echo $e->getMessage();
+        $error=true;
+        unlink($name);
+        $pdo->rollBack();
+        header("Location:../view/inicio.php");
+    }
     header("Location:../view/inicio.php");
 ?>

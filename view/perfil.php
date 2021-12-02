@@ -48,9 +48,9 @@ $user=$pdo->prepare("SELECT * from tbl_usuari WHERE email_user='$email_usu'");
                  echo "../media/img/profile.png";
              }?>" 
              >
-             <form action="../procedures/profile/update-foto.php">
+             <form action="../procedures/profile/update-foto.php" method="POST" enctype="multipart/form-data">
                 <input aria-required="true" required type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>">
-                <input aria-required="true" required type="file" name="nom_user" id="">
+                <input aria-required="true" required type="file" name="foto" id="" accept="image/*">
                 <input type="submit" value="Canviar img">
             </form>
         </div>
@@ -88,7 +88,7 @@ $user=$pdo->prepare("SELECT * from tbl_usuari WHERE email_user='$email_usu'");
             <details><summary>Acceder info</summary>
             <form action="../procedures/profile/update-pass-profile.php">
                 <input aria-required="true" required type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>">
-                <input aria-required="true" required type="password" name="telf_user" value="<?php echo md5($user['pass_user']); ?>">
+                <input aria-required="true" required type="password" name="pass_user" value="<?php echo md5($user['pass_user']); ?>">
                 
                 <input type="submit" value="Actualizar">
             </form>
