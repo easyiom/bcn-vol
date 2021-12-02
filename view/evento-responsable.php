@@ -1,6 +1,7 @@
 <?php
 
 require_once '../services/conection.php';
+session_start();
 $id_evento=$_COOKIE["id-event"];
 ?>
 
@@ -38,6 +39,7 @@ $event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_evento");
                     <p><?php echo $event['adre_event']; ?></p>
                     <p><?php echo $event['capac_event']; ?></p>
                     <p><?php echo $event['estat_event']; ?></p>
+                    <p><?php echo $_SESSION['email'];?><p>
                     <?php } ?>
     </div>
 

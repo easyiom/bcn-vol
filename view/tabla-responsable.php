@@ -74,9 +74,16 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                     
 
                     <td>
-                        <form action="../procedures/resp-cookie-event.php" method="POST">
+                        <form action="../procedures/cookies/resp-cookie-event.php" method="POST">
                             <input type="hidden" value="<?php echo $event['id_events']; ?>" name="id_events">
                             <input type="submit" name="enviar" value='ver'>
+                        </form>
+                        
+                    </td>
+                    <td>
+                        <form action="../procedures/eliminar-event.php" method="POST">
+                            <input type="hidden" value="<?php echo $event['id_events']; ?>" name="id_events">
+                            <input type="submit" name="enviar" value='-'>
                         </form>
                         
                     </td>

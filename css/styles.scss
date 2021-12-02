@@ -91,6 +91,9 @@ body {
     &.tabla-responsable {
         background: $color5;
     }
+    &.profile {
+        background: $color5;
+    }
 }
 
 ///////////////////////////////////////////////////
@@ -202,6 +205,58 @@ body {
             overflow: hidden;
             p {
                 min-height: 146px;
+            }
+        }
+    }
+}
+
+//////////////
+////Box profile
+///////////
+.profile {
+    .region-profile {
+        flex-flow: row wrap;
+        @media (max-width: $grid-float-breakpoint) {
+            flex-flow: columna wrap;
+        }
+        .foto-perfil {
+            margin-top: calc(40px + 4vh);
+            @extend .flex-cv;
+            flex-flow: row wrap;
+            @media (max-width: $grid-float-breakpoint) {
+                flex-flow: columna wrap;
+            }
+            min-width: 90vw;
+            img {
+                max-height: 100px;
+            }
+            form {
+                margin-left: 10vw;
+                input[type='file'] {
+                    max-width: 10vw;
+                }
+            }
+        }
+        .box-profile {
+            @extend .flex-cv;
+            flex-flow: column;
+            padding: 15px;
+            margin: 25px;
+            border: solid 1px #fff;
+            min-height: 50vh;
+            min-width: 20vw;
+            h3 {
+                color: #fff;
+            }
+            summary {
+                color: #fff;
+            }
+            form {
+                @extend .flex-cv;
+                flex-flow: column;
+                input {
+                    margin: 10px 5px;
+                }
             }
         }
     }
@@ -349,123 +404,6 @@ tbody {
         padding: 10px 15px;
         background: $color3;
         color: $color2;
-    }
-}
-
-/////////
-///hamburguesa
-////////////
-.bottomMenu {
-    visibility: hidden;
-    padding-top: 10px;
-    position: fixed;
-    bottom: -175px;
-    z-index: 999;
-    height: 175px;
-    background-color: rgba(53, 53, 53, 0.8);
-    border-radius: 4px 4px 0px 0px;
-    width: 100%;
-    transition: .3s ease bottom;
-    .bot-screen {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
-    }
-    .bot-tool {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        flex: none;
-        flex-shrink: 0;
-        gap: 0px;
-        overflow-x: auto;
-    }
-}
-
-.containerMenu {}
-
-@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    .bottomMenu {
-        webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        background-color: rgba(53, 53, 53, 0.8);
-    }
-    .containerMenu {
-        webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        background-color: rgba(53, 53, 53, 0.8);
-    }
-    /*.leftMenu {
-        webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        background-color: rgba(53, 53, 53, 0.8);
-    }*/
-}
-
-$fg:#6bdf5c;
-.burger-menu {
-    visibility: hidden;
-    display: none;
-    background: $fg;
-    border-radius: 20% 20% 0px 0px;
-    width: 50px;
-    height: 50px;
-    bottom: 0px;
-    right: 0.75%;
-    position: fixed;
-    transition: .3s ease bottom;
-    input {
-        display: none;
-    }
-}
-
-.burger-menu2 {
-    width: 50px;
-    height: 50px;
-    position: relative;
-    transition: .3s ease bottom;
-    input {
-        display: none;
-    }
-}
-
-.hamburger {
-    $width: 25px;
-    $height: 3px;
-    width: $width;
-    height: $height;
-    background: white;
-    display: block;
-    position: absolute;
-    bottom: 50%;
-    right: 25%;
-    transition: transform 200ms;
-}
-
-$hamburger-spacing:8px;
-.hamburger-1 {
-    transform: translate3d(0, -$hamburger-spacing, 0);
-}
-
-.hamburger-2 {
-    transform: translate3d(0, 0, 0);
-}
-
-.hamburger-3 {
-    transform: translate3d(0, $hamburger-spacing, 0);
-}
-
-.menu-open:checked+.menu-open-button {
-    .hamburger-1 {
-        transform: translate3d(0, 0, 0) rotate(45deg);
-    }
-    .hamburger-2 {
-        transform: translate3d(0, 0, 0) scale(0.1, 1);
-    }
-    .hamburger-3 {
-        transform: translate3d(0, 0, 0) rotate(-45deg);
     }
 }
 
