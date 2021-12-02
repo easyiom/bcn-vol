@@ -57,12 +57,13 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                     <th>Direcció</th>
                     <th>Capacitat</th>
                     <th>Estat</th>
+                    <th class='btn-abrirPop btn-abrirPop3'>+</th>
                 </tr>  
             </thead>
             <tbody>
             <?php foreach ($event as $event) { ?>
                 <tr>
-                    <td><?php echo $event['foto_event']; ?></td>
+                    <td ><img style="width:50px;" src="<?php echo $event['foto_event']; ?>"></td>
                     <td><?php echo $event['id_events']; ?></td>
                     <td><?php echo $event['nom_events']; ?></td>
                     <td><?php echo $event['data_ini_event']; ?></td>
@@ -72,9 +73,8 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                     <td><?php echo $event['estat_event']; ?></td>
                     
 
-                    <td><button class="btn-abrirPop"><i class="fas fa-edit"></i></button></td>
                     <td>
-                        <form action="resp-cookie-event.php" method="POST">
+                        <form action="../procedures/resp-cookie-event.php" method="POST">
                             <input type="hidden" value="<?php echo $event['id_events']; ?>" name="id_events">
                             <input type="submit" name="enviar" value='ver'>
                         </form>
@@ -89,26 +89,27 @@ $event=$pdo->prepare("SELECT * from tbl_events");
     <div class="overlay" id="overlay">
         <div class="popup" id="popup">
             <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
-            <div class="contenedor-popup">
+            <div class="contenedor-popup cont-3">
                 <div class="form-body">
                     <h3>Crear evento</h3>
                     <form class="" id="crear-event" action="../procedures/crear-event.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" class="id" name="id">
                         <label for="nom">Nombre</label>
-                        <input type="text" name="nom">
+                        <input type="text" class="nom" name="nom">
                         <label for="ini">Inici</label>
-                        <input type="date" name="ini">
+                        <input type="date" class="ini" name="ini">
                         <label for="fi">Final</label>
-                        <input type="date" name="fi">
+                        <input type="date" class="fi" name="fi">
                         <label for="adre">Dirección</label>
-                        <input type="text" name="adre">
+                        <input type="text" class="adre" name="adre">
                         <label for="desc">Descripción</label>
-                        <input type="texarea" size="250" name="desc">
+                        <input type="texarea" class="desc"  name="desc">
                         <label for="ubi">Ubicación</label>
-                        <input type="texarea" size="250" name="ubi">
+                        <input type="texarea" class="ubi" name="ubi">
                         <label for="cap">Capacidad</label>
-                        <input type="number" name="cap">
+                        <input type="number" class="cap" name="cap">
                         <label for="foto">Foto</label>
-                        <input type="file" name="foto">
+                        <input type="file" class="foto" name="foto">
                         <input type="submit">
                     </form>
                 </div>

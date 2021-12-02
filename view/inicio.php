@@ -1,7 +1,7 @@
 <?php
 
 require_once '../services/conection.php';
-
+session_start();
 ?>
 
 
@@ -68,23 +68,22 @@ $event=$pdo->prepare("SELECT * from tbl_events");
 
 
 <div class="leftMenu" id="leftMenu">
-    <!-- que aparezca uno u otro dependiendo si hay sesion o no -->
-    
-    <button type="submit" title="Cerrar sesión" class="btn-micromenu color btn-abrirPop btn-abrirPop2"><i class="far fa-sign-out"></i><p>Iniciar sesion</p></button>
-    <form action="../procedures/logout.proc.php" method="post">
-        <button title="Cerrar sesión" class="btn-micromenu color"><i class="far fa-sign-out"></i><p>Logout</p></button>
-    </form>
-    
-    <button title="Perfil" class="btn-micromenu color" ><i class="fas fa-user"></i><p>Perfil</p></button>
-    <!-- que aparezca dependiendo si hay sesion o no -->
-    <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-home"></i><p>Inicio</p></button>
-    <!-- que aparezca uno o otro dependiendo ROLES -->
+    <?php if(!isset($_SESSION['email'])){?>
+        <button type="submit" title="Cerrar sesión" class="btn-micromenu color btn-abrirPop btn-abrirPop2"><i class="far fa-sign-out"></i><p>Iniciar sesion</p></button>
+
+    <?php }else{?>
+        <button title="Perfil" class="btn-micromenu color" ><i class="fas fa-user"></i><p>Perfil</p></button>
+        <form action="../procedures/logout.proc.php" method="post">
+            <button title="Cerrar sesión" class="btn-micromenu color"><i class="far fa-sign-out"></i><p>Logout</p></button>
+        </form>
+    <?php }?>
+    <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-home"></i><a href='../view/inicio.php'></a><p>Inicio</p></button>
     <?php if(isset($_COOKIE["rol"]) && $_COOKIE["rol"]=="SuperUser"){ ?>
-        <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-users-cog"></i><p>admin</p></button>
-    <?php }else{} ?>
+        <button title="Inicio" class="btn-micromenu color" ><a href='../view/inicio.php'></a><i class="fas fa-users-cog"></i><p>admin</p></button>
+        <?php } ?>
     <?php if(isset($_COOKIE["rol"]) && ($_COOKIE["rol"]=="Responsable" || $_COOKIE["rol"]=="SuperUser")){ ?>
-        <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-calendar-alt"></i><p>G.Event</p></button>
-    <?php }else{} ?>
+        <button title="Inicio" class="btn-micromenu color" ><a href='../view/inicio.php'></a><i class="fas fa-calendar-alt"></i><p>G.Event</p></button>
+        <?php } ?>
 </div>
        
 
@@ -124,7 +123,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                     <h3>Apuntarse a evento </h3>
                     <details>
                         <summary>No tengo cuenta</summary>
-                        <form class="crear-inscri" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
+                        <form class="crear-inscri" id="apunt-event" action="../procedures/inscripcion.php" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="id-event" class='id-event'>
                             <label for="nombre">Nombre</label>
                             <input type="text" name="nombre">
@@ -146,7 +145,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                             <label for="email">Email</label>
                             <input type="email" name="email">
                             <label for="foto">Foto (opcional)</label>
-                            <input type="file" name="foto">
+                            <input type="file" name="foto" id="file" accept="image/*">
                             <label for="contrasenya">Quieres crearte una cuenta?</label>
                             <input class='contrasenha' type="checkbox" name="contrasenya">
                             <div class="content-password" style='display: none'>
@@ -159,7 +158,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                     <details>
                         <summary>Tengo cuenta</summary>
                         <div class="login">
-                            <form class='crear-inscri' action="">
+                            <form class='crear-inscri' action="../procedures/ins-user-creado.php">
                                 <label for="email">Email</label>
                                 <input type="email" name='email'>
                                 <label for="password">Contraseña</label>
@@ -168,8 +167,6 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                             </form>
                         </div>
                     </details>
-            
-
                 </div>
             </div>
             <div class="contenedor-popup cont-2">
