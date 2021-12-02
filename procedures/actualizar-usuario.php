@@ -17,16 +17,23 @@
     //$id_evento = $_REQUEST['id_events'];
     // $id_evento = 3;
 
-    $id = 20;
+    $id = 17;
     $email = "prueba21@fje.edu";
     $password = "1234";
     $nombre = "Prueba21";
     $apellido = "Prueba21";
     $dni = "47219139E";
-    $dataNaix = "2001-21-21";
+    $dataNaix = "0000-00-00";
     $sexo = "Hombre";
     $telf = "123456789";
-    $foto = NULL;
+    if(isset( $_FILES["foto"] ) && !empty( $_FILES["foto"]["name"] )){
+        $nameimg=$_FILES['foto']['tmp_name'];
+        $dateimg=date('Y-m-d-H-i-s');
+        $path="../public/profile/{$dateimg}_{$_FILES['foto']['name']}";
+        move_uploaded_file($nameimg, $path);
+    }else{
+        $path = null;
+    }
 
     $pdo -> beginTransaction();
     $stmt=$pdo->prepare("UPDATE tbl_usuari SET email_user=?, pass_user=?, nom_user=?, cognom_user=?, dni_user=?, data_naix_user=?, sexe_user=?, telf_user=?, foto_user=? WHERE id_user=?");
@@ -38,7 +45,7 @@
     $stmt->bindParam(6,$dataNaix);
     $stmt->bindParam(7,$sexo);
     $stmt->bindParam(8,$telf);
-    $stmt->bindParam(9,$foto);
+    $stmt->bindParam(9,$path);
     $stmt->bindParam(10,$id);
     try{
         $stmt->execute();
