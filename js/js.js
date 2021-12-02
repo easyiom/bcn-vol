@@ -15,6 +15,9 @@ $(document).ready(function() {
     $(".btn-abrirPop2").click(function() {
         $(".contenedor-popup.cont-2").show();
     });
+    $(".btn-abrirPop3").click(function() {
+        $(".contenedor-popup.cont-3").show();
+    });
     var botCheck = false
     $(".menu-open").click(function() {
         if (botCheck == false) {
@@ -39,6 +42,9 @@ $(document).ready(function() {
             console.log($(this).attr('data-id'))
         });
     })
+    $(".contrasenha").click(function() {
+        $(".content-password").toggle();
+    });
 
 
 });

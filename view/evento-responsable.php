@@ -1,7 +1,7 @@
 <?php
 
 require_once '../services/conection.php';
-
+$id_evento=$_COOKIE["id-event"];
 ?>
 
 
@@ -22,78 +22,29 @@ require_once '../services/conection.php';
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+<?php 
+$event=$pdo->prepare("SELECT * from tbl_events where id_events=$id_evento");
+                $event->execute();
+                $event=$event->fetchAll(PDO::FETCH_ASSOC);
+?>
 <body class="menu">
     <div class="region-inicio flex-cv">
-        <table>
-            <thead>
-                <tr><form action="./historial.php" method="POST">
-                        <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
-                        <th><input type="date" id="" name="horaini" placeholder="Inicio"></th>
-                        <th><input type="date" id="" value="" name="horafi" placeholder="Final"></th>
-                        <th><input type="text" id="" name="datos_res" placeholder="Nombre reserva"></th>
-                    </form>
-                </tr>
-                <tr>
-                    <th>Id</th>
-                    <th>Nom event</th>
-                    <th>Inici</th>
-                    <th>Fi</th>
-                    <th>Direcció</th>
-                </tr>  
-            </thead>
-            <tbody>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                
-                <td><button class="btn-abrirPop">Abrir Popup</button></td>
-            </tbody>
-        </table>
+    <?php foreach ($event as $event) { ?>
+    <p><?php echo $event['foto_event']; ?></p>
+                    <p><?php echo $event['id_events']; ?></p>
+                    <p><?php echo $event['nom_events']; ?></p>
+                    <p><?php echo $event['data_ini_event']; ?></p>
+                    <p><?php echo $event['data_fi_event']; ?></p>
+                    <p><?php echo $event['adre_event']; ?></p>
+                    <p><?php echo $event['capac_event']; ?></p>
+                    <p><?php echo $event['estat_event']; ?></p>
+                    <?php } ?>
     </div>
 
-    <div class="overlay" id="overlay">
-        <div class="popup" id="popup">
-            <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
-            <div class="contenedor-popup">
-                <div class="form-body">
-
-                    <h3>Crear evento</h3>
-                    <form class="" id="crear-event" action="../procedures/" method="POST" enctype="multipart/form-data">
-                        <!-- SI troves a faltar algun camp, metele amor -->
-                        <label for="nom">Nombre</label>
-                        <input type="text" name="nom">
-                        <label for="ini">Inici</label>
-                        <input type="date" name="ini">
-                        <label for="fi">Final</label>
-                        <input type="date" name="fi">
-                        <label for="adre">Dirección</label>
-                        <input type="text" name="adre">
-                        <label for="desc">Descripción</label>
-                        <input type="texarea" size="250" name="desc">
-                        <label for="ubi">Ubicación</label>
-                        <input type="texarea" size="250" name="ubi">
-                        <label for="cap">Capacidad</label>
-                        <input type="number" name="cap">
-                        <label for="foto">Foto</label>
-                        <input type="file" name="foto">
-                        <input type="submit">
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 
-    <div class="burger-menu" id="burger-menu">
-        <input type="checkbox" href="#"  class="menu-open" name="menu-open" id="menu-open"/>
-        <label class="menu-open-button" for="menu-open">
-            <span class="hamburger hamburger-1"></span>
-            <span class="hamburger hamburger-2"></span>
-            <span class="hamburger hamburger-3"></span>
-        </label>
-    </div>
+
     
 </body>
 </html>
