@@ -1,5 +1,5 @@
 <?php
-    include '../services/conection.php';
+    include '../../services/conection.php';
     include '../procedures/class/usuario.php';
 
     // $email = $_REQUEST['email_user'];
@@ -45,13 +45,13 @@
         try{
             if($stmt->execute((array) $usuario)){
             $pdo->commit();
-            header("Location:../view/inicio.php");
+            header("Location:../../view/inicio.php");
             }
         }catch(PDOException $e){
             echo $e->getMessage();
             unlink($name);
             $pdo->rollBack();
-            header("Location:../view/inicio.php");
+            header("Location:../../view/inicio.php");
         }
     }
 ?>

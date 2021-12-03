@@ -2,13 +2,12 @@
 
     include '../services/conection.php';
 
-    // $email=$_REQUEST['email_user'];
-    // $password=$_REQUEST['pass_user'];
-    //$id_evento=$_REQUEST['id_events'];
-    $email="isaac@fje.edu";
-    $password=md5("1234");
+    $email=$_REQUEST['email'];
+    $password=$_REQUEST['password'];
+    $id_evento=$_REQUEST['id-event'];
+    
 
-    $id_evento=2;
+    
     //s'ha de posar que ho pilli pel hidden
 
     $stmt=$pdo->prepare("SELECT id_user FROM tbl_usuari WHERE email_user LIKE '%$email%'");

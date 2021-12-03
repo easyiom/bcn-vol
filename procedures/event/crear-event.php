@@ -1,6 +1,6 @@
 <?php
-    include '../services/conection.php';
-    include '../procedures/class/evento.php';
+    include_once '../../services/conection.php';
+    include_once '../../procedures/class/evento.php';
 
     //Recogemos los datos del formulario
     $nombre=$_REQUEST['nom'];
@@ -38,11 +38,11 @@
     if (move_uploaded_file($name, $path)){
     try{
         if($stmt->execute((array) $evento)){
-            header("Location:../view/inicio.php");
+            header("Location:../../view/inicio.php");
         }
     }catch(PDOException $e){
         echo $e->getMessage();
-        header("Location:../view/inicio.php");
+        header("Location:../../view/inicio.php");
         unlink($path);
     }
 }

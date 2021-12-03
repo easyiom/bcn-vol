@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../services/conection.php';
 
 ?>
@@ -21,109 +21,125 @@ require_once '../services/conection.php';
     <script type="text/javascript" src="../js/js.js"></script>
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/menu.css">
+
 </head>
-<body class="tabla-admin">
-    <div class="region-admin flex-cv">
+<?php 
+$usu=$pdo->prepare("SELECT * from tbl_usuari");
+                $usu->execute();
+                $usu=$usu->fetchAll(PDO::FETCH_ASSOC);
+?>
+<body class="tabla-responsable">
+    <div class="region-responsable flex-cv">
         <table>
             <thead>
-                <tr><form action="./tabla-admin.php" method="POST">
+                <tr><form action="./historial.php" method="POST">
                         <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
-                        <th><input type="email" id="email" name="email" placeholder="email"></th>
-                        <th><input type="text" id="" name="nom" placeholder="Nom"></th>
-                        <th><input type="text" id="" name="cognom" placeholder="Cognom"></th>
-                        <th><input type="text" id="" name="dni" placeholder="DNI"></th>
-                        <th><input type="date" id="" name="dataNaix" placeholder="Data naixament"></th>
+                        <th><input type="text" id="" name="nom_events" placeholder="Nom"></th>
+                        <th><input type="date" id="" name="horaini" placeholder="Inicio"></th>
+                        <th><input type="date" id="" value="" name="horafi" placeholder="Final"></th>
+                        
                         <th>
-                            <select>
-                                <option value="">Todos</option>
-                                <option value="">Hombre</option>
-                                <option value="">Mujer</option>
-                                <option value="">Otros</option>
-                            </select>
-                        </th>
-                        <th><input type="tel" name="" id=""></th>
-                        <th>
-                            <select>
-                                <option value="">Todos</option>
-                                <option value="">Hombre</option>
-                                <option value="">Mujer</option>
-                                <option value="">Otros</option>
+                            <select name="estat" id="">
+                                <option value=""></option>
+                                <option value="Activo">Activo</option>
+                                <option value="Lleno">Lleno</option>
                             </select>
                         </th>
                     </form>
                 </tr>
                 <tr>
-                    <th>foto</th>
+                    <th>Foto</th>
                     <th>Id</th>
-                    <th>email</th>
-                    <th>Nom</th>
-                    <th>Cognom</th>
-                    <th>dni</th>
-                    <th>data naix</th>
-                    <th>sexe</th>
-                    <th>telf</th>
-                    <th>rol</th>
+                    <th>Nom event</th>
+                    <th>Inici</th>
+                    <th>Fi</th>
+                    <th>Direcció</th>
+                    
+                    <th class='btn-abrirPop btn-abrirPop3'>+</th>
                 </tr>  
             </thead>
             <tbody>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><button class="btn-abrirPop">Abrir Popup</button></td>
+            <?php foreach ($usu as $usu) { ?>
+                <tr>
+                <td ><img style="width:50px;" src="<?php echo $usu['foto_user']; ?>"></td>
+                    <td><?php echo $usu['id_user']; ?></td>
+                    <td><?php echo $usu['email_user']; ?></td>
+                    <td><?php echo $usu['nom_user']; ?></td>
+                    <td><?php echo $usu['cognom_user']; ?></td>
+                    <td><?php echo $usu['dni_user']; ?></td>
+                    
+
+                    <td>
+                        <form action="../procedures/cookies/admin-cookie.php" method="POST">
+                            <input type="hidden" value="<?php echo $usu['id_user']; ?>" name="id_user">
+                            <input type="submit" name="enviar" value='ver'>
+                        </form>
+                        
+                    </td>
+                    <td>
+                        <form action="../procedures/users/eliminar-usuario.php" method="POST">
+                            <input type="hidden" value="<?php echo $usu['id_user']; ?>" name="id_user">
+                            <input type="submit" name="enviar" value='-'>
+                        </form>
+                        
+                    </td>
+                </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
 
+
+    <div class="leftMenu" id="leftMenu">
+        <?php if(!isset($_SESSION['email'])){?>
+            <button type="submit" title="Cerrar sesión" class="btn-micromenu color btn-abrirPop btn-abrirPop2"><i class="far fa-sign-out"></i><p>Iniciar sesion</p></button>
+
+        <?php }else{?>
+            <button title="Perfil" class="btn-micromenu color" ><a class="a-menu" href='../view/perfil.php'></a><i class="fas fa-user"></i><p>Perfil</p></button>
+            <form action="../procedures/logout.proc.php" method="post">
+                <button title="Cerrar sesión" class="btn-micromenu color"><i class="far fa-sign-out"></i><p>Logout</p></button>
+            </form>
+        <?php }?>
+        <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-home"></i><a class="a-menu" href='../view/inicio.php'></a><p>Inicio</p></button>
+        <?php if(isset($_COOKIE["rol"]) && $_COOKIE["rol"]=="SuperUser"){ ?>
+            <button title="Admin" class="btn-micromenu color" ><a class="a-menu" href='../view/tabla-admin.php'></a><i class="fas fa-users-cog"></i><p>admin</p></button>
+            <?php } ?>
+        <?php if(isset($_COOKIE["rol"]) && ($_COOKIE["rol"]=="Responsable" || $_COOKIE["rol"]=="SuperUser")){ ?>
+            <button title="Event managment" class="btn-micromenu color" ><a class="a-menu" href='../view/tabla-responsable.php'></a><i class="fas fa-calendar-alt"></i><p>G.Event</p></button>
+            <?php } ?>
+    </div>
+
+
+
+
     <div class="overlay" id="overlay">
         <div class="popup" id="popup">
             <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
-            
-            <div class="contenedor-popup">
+            <div class="contenedor-popup cont-3">
                 <div class="form-body">
-                <h3>Apuntarse a evento <span class="numeroEj"></span></h3>
-    
-            <form class="" id="apunt-event" action="../procedures/" method="POST" enctype="multipart/form-data">
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre">
-                <label for="apellido">Apellidos</label>
-                <input type="text" name="apellido">
-                <label for="edad">Fecha de nacimiento</label>
-                <input type="date" name="edad">
-                <label for="sexe">Sexo</label>
-                <div>
-                    <!-- se podria cojer de la base de datos -->
-                    <input type="radio" name="sexe" value="Hombre">
-                    <input type="radio" name="sexe" value="Mujer">
-                    <input type="radio" name="sexe" value="Otro">
-                </div>
-                <label for="dni">DNI</label>
-                <input type="text" size="10" name="dni">
-                <label for="telf">Teléfono</label>
-                <input type="number" name="telf">
-                <label for="email">Email</label>
-                <input type="email" name="email">
-                <label for="foto">Foto (opcional)</label>
-                <input type="file" name="foto">
-                <label for="contrasenya">Quieres crearte una cuenta?</label>
-                <input type="checkbox" name="contrasenya">
-                <div class="login"></div>
-                <input type="submit">
-            </form>
-            <div class="login">
-                <form action="">
-                    <input type="email" name="" id="">
-                    <input type="password" name="" id="">
-                </form>
-            </div>
-
+                    <h3>Crear evento</h3>
+                    <form class="" id="crear-event" action="../procedures/event/crear-event.php" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" class="id" name="id">
+                        <label for="nom">Nombre</label>
+                        <input type="text" class="nom" name="nom">
+                        <label for="ini">Inici</label>
+                        <input type="date" class="ini" name="ini">
+                        <label for="fi">Final</label>
+                        <input type="date" class="fi" name="fi">
+                        <label for="adre">Dirección</label>
+                        <input type="text" class="adre" name="adre">
+                        <label for="desc">Descripción</label>
+                        <input type="texarea" class="desc"  name="desc">
+                        <label for="ubi">Ubicación</label>
+                        <input type="texarea" class="ubi" name="ubi">
+                        <label for="cap">Capacidad</label>
+                        <input type="number" class="cap" name="cap">
+                        <label for="foto">Foto</label>
+                        <input type="file" class="foto" name="foto">
+                        <input type="submit">
+                    </form>
                 </div>
             </div>
         </div>

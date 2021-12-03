@@ -2,8 +2,8 @@
 session_start();
 if (isset($_SESSION['email'])){
     include_once '../services/conection.php';
-    $email_usu= $_SESSION['email'] ;
     
+    $idusu=$_COOKIE["id-person"];
 ?>
 
 
@@ -27,7 +27,7 @@ if (isset($_SESSION['email'])){
 </head>
 <?php 
 
-$user=$pdo->prepare("SELECT * from tbl_usuari WHERE email_user='$email_usu'");
+$user=$pdo->prepare("SELECT * from tbl_usuari WHERE id_user=$idusu");
 
                 $user->execute();
                 $user=$user->fetchAll(PDO::FETCH_ASSOC);
@@ -119,7 +119,7 @@ INNER JOIN
 tbl_usuari usu 
 ON 
 ins.id_user=usu.id_user 
-WHERE usu.email_user='$email_usu'");
+WHERE usu.id_user = $idusu");
                 $events->execute();
                 $events=$events->fetchAll(PDO::FETCH_ASSOC);
 ?>
