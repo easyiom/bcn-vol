@@ -9,14 +9,14 @@ if (isset($_SESSION['email']))
             setcookie("id-event", "", time() - 3153600000, "/");
             setCookie('id-event', "$idevent", time()+30000, "/");
           
-            header("Location:../view/evento-responsable.php");
+            header("Location:../../view/evento-responsable.php");
         }else{
-            header("Location:../view/tabla-responsable.php");
+            header("Location:../../view/tabla-responsable.php");
         }
     }
 }else
 {
-    header("Location:../view/inicio.php");
+    header("Location:../../view/inicio.php");
 }
 ?>
 

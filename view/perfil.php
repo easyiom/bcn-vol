@@ -125,7 +125,7 @@ WHERE usu.email_user='$email_usu'");
 ?>
                     <table>
             <thead>
-                <tr><form action="./historial.php" method="POST">
+                <!-- <tr><form action="./historial.php" method="POST">
                         <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
                         <th><input type="text" id="" name="nom_events" placeholder="Nom"></th>
@@ -141,7 +141,7 @@ WHERE usu.email_user='$email_usu'");
                             </select>
                         </th>
                     </form>
-                </tr>
+                </tr> -->
                 <tr>
                     <th>Foto</th>
                     <th>Id</th>
@@ -151,7 +151,7 @@ WHERE usu.email_user='$email_usu'");
                     <th>Direcció</th>
                     <th>Capacitat</th>
                     <th>Estat</th>
-                    <th class='btn-abrirPop btn-abrirPop3'>+</th>
+                    
                 </tr>  
             </thead>
             <tbody>

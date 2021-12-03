@@ -2,6 +2,20 @@
   display: none;
 }
 
+.white {
+  color: #fff;
+}
+
+.white p,
+.white a,
+.white h1,
+.white h2,
+.white h3,
+.white h4,
+.white h5 {
+  color: #fff;
+}
+
 .flex-cv, .region-event-single .event-data form, .profile .region-profile .foto-perfil, .profile .region-profile .box-profile, .profile .region-profile .box-profile form, .popup .form-body, .popup form {
   display: -webkit-box;
   display: -ms-flexbox;

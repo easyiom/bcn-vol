@@ -99,7 +99,7 @@ $events=$pdo->prepare("SELECT ev.id_events, ev.nom_events, ev.data_ini_event, ev
 
         <table>
             <thead>
-                <tr><form action="./historial.php" method="POST">
+                <!-- <tr><form action="./historial.php" method="POST">
                         <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
                         <th><input type="text" id="" name="nom_events" placeholder="Nom"></th>
@@ -109,7 +109,7 @@ $events=$pdo->prepare("SELECT ev.id_events, ev.nom_events, ev.data_ini_event, ev
                         <th><input type="number" id="" name="capac_event" placeholder="Capacitat"></th>
                         
                     </form>
-                </tr>
+                </tr> -->
                 <tr>
                     <th>Foto</th>
                     <th>Id user</th>
