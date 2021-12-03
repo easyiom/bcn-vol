@@ -38,7 +38,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
             <!-- meter id con php  en el data id -->
             <div data-id="<?php echo $event['id_events']; ?>" class="card btn-abrirPop btn-abrirPop1">
                 <!-- la foto -->
-                <img src="../media/img/focsartificials.jpg" class="header-image" alt="" />
+                <img src="<?php echo $event['foto_event']; ?>" class="header-image" alt="" />
                 <div class="c-overlay">
                     <div class="c-header">
                         <svg class="arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
@@ -120,7 +120,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
             
             <div class="contenedor-popup cont-1">
                 <div class="form-body">
-                    <h3>Apuntarse a evento </h3>
+                    <h3>Apuntarse a evento</h3>
                     <details>
                         <summary>No tengo cuenta</summary>
                         <form class="crear-inscri" id="apunt-event" action="../procedures/inscripcion.php" method="POST" enctype="multipart/form-data">
@@ -134,8 +134,11 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                             <label for="sexe">Sexo</label>
                             <div>
                                 <!-- se podria cojer de la base de datos -->
+                                <label>Hombre</label>
                                 <input type="radio" name="sexe" value="Hombre">
+                                <label>Mujer</label>
                                 <input type="radio" name="sexe" value="Mujer">
+                                <label>Otro</label>
                                 <input type="radio" name="sexe" value="Otro">
                             </div>
                             <label for="dni">DNI</label>

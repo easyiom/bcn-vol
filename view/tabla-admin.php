@@ -119,27 +119,46 @@ $usu=$pdo->prepare("SELECT * from tbl_usuari");
             <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
             <div class="contenedor-popup cont-3">
                 <div class="form-body">
-                    <h3>Crear evento</h3>
-                    <form class="" id="crear-event" action="../procedures/users/crear-usuario.php" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" class="id" name="id">
-                        <label for="nom">Nombre</label>
-                        <input type="text" class="nom" name="nom">
-                        <label for="ini">Inici</label>
-                        <input type="date" class="ini" name="ini">
-                        <label for="fi">Final</label>
-                        <input type="date" class="fi" name="fi">
-                        <label for="adre">Dirección</label>
-                        <input type="text" class="adre" name="adre">
-                        <label for="desc">Descripción</label>
-                        <input type="texarea" class="desc"  name="desc">
-                        <label for="ubi">Ubicación</label>
-                        <input type="texarea" class="ubi" name="ubi">
-                        <label for="cap">Capacidad</label>
-                        <input type="number" class="cap" name="cap">
-                        <label for="foto">Foto</label>
-                        <input type="file" class="foto" name="foto">
-                        <input type="submit">
-                    </form>
+                    <h3>Crear usuario</h3>
+                    <form class="crear-inscri" id="apunt-event" action="../procedures/users/crear-usuario.php" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id-event" class='id-event'>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" name="nombre">
+                            <label for="apellido">Apellidos</label>
+                            <input type="text" name="apellido">
+                            <label for="edad">Fecha de nacimiento</label>
+                            <input type="date" name="edad">
+                            <label for="sexe">Sexo</label>
+                            <div>
+                                <!-- se podria cojer de la base de datos -->
+                                <label>Hombre</label>
+                                <input type="radio" name="sexe" value="Hombre">
+                                <label>Mujer</label>
+                                <input type="radio" name="sexe" value="Mujer">
+                                <label>Otro</label>
+                                <input type="radio" name="sexe" value="Otro">
+                            </div>
+                            <label for="dni">DNI</label>
+                            <input type="text" size="10" name="dni">
+                            <label for="telf">Teléfono</label>
+                            <input type="number" name="telf">
+                            <label for="email">Email</label>
+                            <input type="email" name="email">
+                            <select name="rol" id="rol_user">
+                                <option value="1">SuperUser</option>
+                                <option value="2">Responsable</option>
+                                <option selected value="3">Usuario</option>
+                            </select>
+                            <label for="foto">Foto (opcional)</label>
+                            <input type="file" name="foto" id="file" accept="image/*">
+                            <label for="contrasenya">Quieres crearte una cuenta?</label>
+                            <input class='contrasenha' type="checkbox" name="contrasenya">
+                            <div class="content-password" style='display: none'>
+                                <label for="password">Contraseña</label>
+                                <input type="password" name="password">
+                            </div>
+                            <input type="submit">
+                        </form>
                 </div>
             </div>
         </div>
