@@ -5,7 +5,11 @@ DELIMITER $$
         SET @estat = (SELECT estat_event FROM tbl_events WHERE id_events = NEW.id_events);
         SET @count= (SELECT (count(*)+1 )FROM tbl_inscri WHERE id_events = NEW.id_events);
         SET @capacidad = (SELECT capac_event FROM tbl_events WHERE id_events = NEW.id_events);
-        IF @estat <> 'Activo'
+        SET @countInsUsu = (SELECT COUNT(*) FROM tbl_inscri WHERE id_user=NEW.id_user AND id_events=NEW.id_events);
+        IF @countInsUsu >= 1
+            THEN SIGNAL SQLSTATE '45000'
+                SET MESSAGE_TEXT = 'Ya se ha inscrito en este evento';
+        ELSEIF @estat <> 'Activo'
             THEN SIGNAL SQLSTATE '45000'
                 SET MESSAGE_TEXT = 'Capacitat máxima completa';
 
