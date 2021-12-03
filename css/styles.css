@@ -2,7 +2,7 @@
   display: none;
 }
 
-.flex-cv, .profile .region-profile .foto-perfil, .profile .region-profile .box-profile, .profile .region-profile .box-profile form, .popup .form-body, .popup form {
+.flex-cv, .region-event-single .event-data form, .profile .region-profile .foto-perfil, .profile .region-profile .box-profile, .profile .region-profile .box-profile form, .popup .form-body, .popup form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -96,6 +96,10 @@ body.tabla-responsable {
 }
 
 body.profile {
+  background: #172A3A;
+}
+
+body.event-single {
   background: #172A3A;
 }
 
@@ -221,6 +225,45 @@ body.profile {
   min-height: 146px;
 }
 
+.region-event-single {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.region-event-single h2 {
+  font-size: calc(25px + 1vw);
+  color: #fff;
+  margin-bot: 25px;
+}
+
+.region-event-single .foto-event {
+  margin-top: 30px;
+  height: 30vh;
+  overflow: hidden;
+}
+
+.region-event-single .foto-event img {
+  max-width: 60vw;
+  overflow: hidden;
+}
+
+.region-event-single .event-data {
+  margin-top: 30px;
+}
+
+.region-event-single .event-data form {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
+}
+
+.region-event-single .event-data form input {
+  margin: 10px 5px;
+}
+
 .profile .region-profile {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -232,8 +275,8 @@ body.profile {
   .profile .region-profile {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-flow: columna wrap;
-            flex-flow: columna wrap;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
   }
 }
 
@@ -250,8 +293,8 @@ body.profile {
   .profile .region-profile .foto-perfil {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-flow: columna wrap;
-            flex-flow: columna wrap;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
   }
 }
 

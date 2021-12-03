@@ -39,7 +39,6 @@ $(document).ready(function() {
     $(".btn-abrirPop").each(function(index) {
         $(this).click(function() {
             $(".crear-inscri .id-event").val($(this).attr('data-id'))
-            console.log($(this).attr('data-id'))
         });
     })
     $(".contrasenha").click(function() {

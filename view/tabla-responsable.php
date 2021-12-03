@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../services/conection.php';
 
 ?>
@@ -21,6 +21,8 @@ require_once '../services/conection.php';
     <script type="text/javascript" src="../js/js.js"></script>
     <link rel="icon" type="image/png" href="../img/icon.png">
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/menu.css">
+
 </head>
 <?php 
 $event=$pdo->prepare("SELECT * from tbl_events");
@@ -81,7 +83,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                         
                     </td>
                     <td>
-                        <form action="../procedures/eliminar-event.php" method="POST">
+                        <form action="../procedures/event/eliminar-event.php" method="POST">
                             <input type="hidden" value="<?php echo $event['id_events']; ?>" name="id_events">
                             <input type="submit" name="enviar" value='-'>
                         </form>
@@ -93,13 +95,36 @@ $event=$pdo->prepare("SELECT * from tbl_events");
         </table>
     </div>
 
+
+    <div class="leftMenu" id="leftMenu">
+        <?php if(!isset($_SESSION['email'])){?>
+            <button type="submit" title="Cerrar sesión" class="btn-micromenu color btn-abrirPop btn-abrirPop2"><i class="far fa-sign-out"></i><p>Iniciar sesion</p></button>
+
+        <?php }else{?>
+            <button title="Perfil" class="btn-micromenu color" ><a class="a-menu" href='../view/perfil.php'></a><i class="fas fa-user"></i><p>Perfil</p></button>
+            <form action="../procedures/logout.proc.php" method="post">
+                <button title="Cerrar sesión" class="btn-micromenu color"><i class="far fa-sign-out"></i><p>Logout</p></button>
+            </form>
+        <?php }?>
+        <button title="Inicio" class="btn-micromenu color" ><i class="fas fa-home"></i><a class="a-menu" href='../view/inicio.php'></a><p>Inicio</p></button>
+        <?php if(isset($_COOKIE["rol"]) && $_COOKIE["rol"]=="SuperUser"){ ?>
+            <button title="Admin" class="btn-micromenu color" ><a class="a-menu" href='../view/tabla-admin.php'></a><i class="fas fa-users-cog"></i><p>admin</p></button>
+            <?php } ?>
+        <?php if(isset($_COOKIE["rol"]) && ($_COOKIE["rol"]=="Responsable" || $_COOKIE["rol"]=="SuperUser")){ ?>
+            <button title="Event managment" class="btn-micromenu color" ><a class="a-menu" href='../view/tabla-responsable.php'></a><i class="fas fa-calendar-alt"></i><p>G.Event</p></button>
+            <?php } ?>
+    </div>
+
+
+
+
     <div class="overlay" id="overlay">
         <div class="popup" id="popup">
             <a href="#" id="btn-cerrar-popup" class="btn-cerrarPop"><i class="fas fa-times"></i></a>
             <div class="contenedor-popup cont-3">
                 <div class="form-body">
                     <h3>Crear evento</h3>
-                    <form class="" id="crear-event" action="../procedures/crear-event.php" method="POST" enctype="multipart/form-data">
+                    <form class="" id="crear-event" action="../procedures/event/crear-event.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" class="id" name="id">
                         <label for="nom">Nombre</label>
                         <input type="text" class="nom" name="nom">

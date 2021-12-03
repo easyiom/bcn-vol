@@ -1,5 +1,5 @@
 <?php
-    include '../services/conection.php';
+    include '../../services/conection.php';
 
     //$id = $_REQUEST['id_user'];
     $id = 17;
@@ -10,11 +10,11 @@
     try{
         $qry -> execute();
         $pdo->commit();
-        //header("Location:../view/inicio.php");
+        //header("Location:../../view/inicio.php");
     }catch(PDOException $e){
         echo $e->getMessage();
         $pdo->rollBack();
-        //header("Location:../view/inicio.php");
+        //header("Location:../../view/inicio.php");
     }
 
     $stmt = $pdo->prepare("DELETE FROM tbl_usuari WHERE id_user=?");
@@ -22,11 +22,11 @@
     try{
         $stmt -> execute();
         $pdo->commit();
-        //header("Location:../view/inicio.php");
+        //header("Location:../../view/inicio.php");
     }catch(PDOException $e){
         echo $e->getMessage();
         $pdo->rollBacK();
-        //header("Location:../view/inicio.php");
+        //header("Location:../../view/inicio.php");
     }
 
     

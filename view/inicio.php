@@ -159,6 +159,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                         <summary>Tengo cuenta</summary>
                         <div class="login">
                             <form class='crear-inscri' action="../procedures/ins-user-creado.php">
+                            <input type="hidden" name="id-event" class='id-event'>
                                 <label for="email">Email</label>
                                 <input type="email" name='email'>
                                 <label for="password">Contraseña</label>

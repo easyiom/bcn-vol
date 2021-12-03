@@ -94,6 +94,9 @@ body {
     &.profile {
         background: $color5;
     }
+    &.event-single {
+        background: $color5;
+    }
 }
 
 ///////////////////////////////////////////////////
@@ -210,6 +213,35 @@ body {
     }
 }
 
+.region-event-single {
+    flex-flow: column wrap;
+    h2 {
+        font-size: calc(25px + 1vw);
+        color: #fff;
+        margin-bot: 25px;
+    }
+    .foto-event {
+        margin-top: 30px;
+        height: 30vh;
+        overflow: hidden;
+        img {
+            max-width: 60vw;
+            overflow: hidden;
+        }
+    }
+    .box-event {}
+    .event-data {
+        margin-top: 30px;
+        form {
+            @extend .flex-cv;
+            flex-flow: column wrap;
+            input {
+                margin: 10px 5px;
+            }
+        }
+    }
+}
+
 //////////////
 ////Box profile
 ///////////
@@ -217,14 +249,14 @@ body {
     .region-profile {
         flex-flow: row wrap;
         @media (max-width: $grid-float-breakpoint) {
-            flex-flow: columna wrap;
+            flex-flow: column wrap;
         }
         .foto-perfil {
             margin-top: calc(40px + 4vh);
             @extend .flex-cv;
             flex-flow: row wrap;
             @media (max-width: $grid-float-breakpoint) {
-                flex-flow: columna wrap;
+                flex-flow: column wrap;
             }
             min-width: 90vw;
             img {

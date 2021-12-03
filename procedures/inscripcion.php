@@ -60,7 +60,7 @@ function pss($pass){
     }
     
 }
-
+//miramos si en el form han puesto los campos correspondientes y lanzamos la query para evitar perder datos
 if(empty($result)){
     $usuario = new Usuario($id,$email,$password,$nombre,$apellido,$dni,$dataNaix,$sexo,$telf,$path,$rol);
     $pdo -> beginTransaction();
@@ -79,7 +79,7 @@ if(empty($result)){
         $pdo->rollBack();
         $error=true;
         unlink($path);
-        //header("Location:../view/inicio.php");
+        header("Location:../view/inicio.php");
     }
 }elseif(!empty($result)){
     $idusu= $result['id_user'];
@@ -131,7 +131,7 @@ if(empty($result)){
         $stmt->bindParam(9,$path);
     }
     
-    
+    //ejecutar query
     try{
         
         $stmt->execute();
@@ -145,7 +145,7 @@ if(empty($result)){
         $error=true;
         $pdo->rollBack();
         unlink($path);
-        //header("Location:../view/inicio.php");
+        header("Location:../view/inicio.php");
     }
     // if ($error){
     //     header("Location:../view/inicio.php?error=1");
@@ -156,5 +156,5 @@ if(empty($result)){
 
 }
 else{
-   // header("Location:../view/inicio.php");
+   header("Location:../view/inicio.php");
 }

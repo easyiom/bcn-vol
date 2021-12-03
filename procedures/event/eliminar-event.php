@@ -1,5 +1,5 @@
 <?php
-    include '../services/conection.php';
+    include_once '../../services/conection.php';
 
     $id=$_REQUEST['id_events'];
 
@@ -21,10 +21,10 @@
     try{
         $stmt -> execute();
         $pdo->commit();
-        header("Location:../view/inicio.php");
+        header("Location:../../view/inicio.php");
     }catch(PDOException $e){
         echo $e->getMessage();
         $pdo->rollBack();
-        header("Location:../view/inicio.php");
+        header("Location:../../view/inicio.php");
     }
 ?>
