@@ -9,17 +9,17 @@
     try{
         $stmt -> execute();
         $pdo->commit();
-        if($_COOKIE["rol"]=="Responsable"){
+        if($_COOKIE["rol"]=="Usuario"){
             header("Location:../../view/perfil.php");
         }else{
-        header("Location:../../view/evento-resonsable.php");}
+        header("Location:../../view/evento-responsable.php");}
     }catch(PDOException $e){
         echo $e->getMessage();
         $pdo->rollBack();
         if($_COOKIE["rol"]=="Usuario"){
             header("Location:../../view/perfil.php");
         }else{
-        header("Location:../../view/evento-resonsable.php");}
+        header("Location:../../view/evento-responsable.php");}
     }
 
     ?>
