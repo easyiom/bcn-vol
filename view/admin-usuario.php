@@ -93,7 +93,21 @@ $user=$pdo->prepare("SELECT * from tbl_usuari WHERE id_user=$idusu");
                 <input type="submit" value="Actualizar">
             </form>
             </details>
+            <h3>Rol</h3>
+            <details><summary>Acceder info</summary>
+            <form action="../procedures/profile/update-rol-profile.php">
+                <input aria-required="true" required type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>">
+                <select name="rol_user" id="rol_user" value="<?php echo $user['rol_user']; ?>">
+                    <option value="1">SuperAdmin</option>
+                    <option value="2">Responsable</option>
+                    <option value="3">Usuario</option>
+                </select>
+                
+                <input type="submit" value="Actualizar">
+            </form>
+            </details>
         </div>
+        
 
 
    
@@ -123,9 +137,11 @@ WHERE usu.id_user = $idusu");
                 $events->execute();
                 $events=$events->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<div><div class="flex-cv white"><h3 class="white">Inscripciones del usuario</h3></div>
                     <table>
+                    
             <thead>
-                <tr><form action="./historial.php" method="POST">
+                <!-- <tr><form action="./historial.php" method="POST">
                         <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
                         <th><input type="text" id="" name="nom_events" placeholder="Nom"></th>
@@ -141,7 +157,8 @@ WHERE usu.id_user = $idusu");
                             </select>
                         </th>
                     </form>
-                </tr>
+                </tr> -->
+               
                 <tr>
                     <th>Foto</th>
                     <th>Id</th>
@@ -179,7 +196,7 @@ WHERE usu.id_user = $idusu");
             </tbody>
         </table>
 
-
+        </div>
 
 
     </div>

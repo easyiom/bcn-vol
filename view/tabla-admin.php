@@ -33,7 +33,7 @@ $usu=$pdo->prepare("SELECT * from tbl_usuari");
     <div class="region-responsable flex-cv">
         <table>
             <thead>
-                <tr><form action="./historial.php" method="POST">
+                <!-- <tr><form action="./historial.php" method="POST">
                         <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
                         <th><input type="text" id="" name="nom_events" placeholder="Nom"></th>
@@ -48,7 +48,7 @@ $usu=$pdo->prepare("SELECT * from tbl_usuari");
                             </select>
                         </th>
                     </form>
-                </tr>
+                </tr> -->
                 <tr>
                     <th>Foto</th>
                     <th>Id</th>
@@ -120,7 +120,7 @@ $usu=$pdo->prepare("SELECT * from tbl_usuari");
             <div class="contenedor-popup cont-3">
                 <div class="form-body">
                     <h3>Crear evento</h3>
-                    <form class="" id="crear-event" action="../procedures/event/crear-event.php" method="POST" enctype="multipart/form-data">
+                    <form class="" id="crear-event" action="../procedures/users/crear-usuario.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" class="id" name="id">
                         <label for="nom">Nombre</label>
                         <input type="text" class="nom" name="nom">

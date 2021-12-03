@@ -5,6 +5,19 @@
     display: none;
 }
 
+.white {
+    color: #fff;
+    p,
+    a,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: #fff;
+    }
+}
+
 .flex-cv {
     display: flex;
     justify-content: center;

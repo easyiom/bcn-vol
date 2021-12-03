@@ -33,7 +33,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
     <div class="region-responsable flex-cv">
         <table>
             <thead>
-                <tr><form action="./historial.php" method="POST">
+                <!-- <tr><form action="./historial.php" method="POST">
                         <th></th>
                         <th><input type="number" id="" name="id_res" placeholder="ID reserva"></th>
                         <th><input type="text" id="" name="nom_events" placeholder="Nom"></th>
@@ -49,7 +49,7 @@ $event=$pdo->prepare("SELECT * from tbl_events");
                             </select>
                         </th>
                     </form>
-                </tr>
+                </tr> -->
                 <tr>
                     <th>Foto</th>
                     <th>Id</th>

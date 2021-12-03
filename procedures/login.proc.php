@@ -41,10 +41,10 @@ try {
                 setcookie("rol", "", time() - 3153600000, "/");
             }
         }
-        // header("Location:../view/inicio.php");
+        header("Location:../view/inicio.php");
     }
     else {
-        // header("Location:../view/inicio.php");
+        header("Location:../view/inicio.php");
     }
 }catch(PDOException $e){
     header("Location:../view/inicio.php");

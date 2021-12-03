@@ -6,7 +6,7 @@ include '../procedures/class/usuario.php';
 //Recogemos variables del Formulario
 $email = $_REQUEST['email'];
 if(isset($_REQUEST['password'])){
-    $password = $_REQUEST['password'];
+    $password = md5($_REQUEST['password']);
 }else{
     $password=null;
 }
@@ -140,6 +140,7 @@ if(empty($result)){
             $sql->bindParam(2,$id_evento);
             $sql->execute();
             $pdo->commit();
+            header("Location:../view/inicio.php?error=1");
     }catch(PDOException $e){
         echo $e->getMessage();
         $error=true;
@@ -147,13 +148,13 @@ if(empty($result)){
         unlink($path);
         header("Location:../view/inicio.php");
     }
-    // if ($error){
-    //     header("Location:../view/inicio.php?error=1");
-    // }else{
-    //     header("Location:../view/inicio.php");
+    if ($error){
+        header("Location:../view/inicio.php?error=1");
+    }else{
+        header("Location:../view/inicio.php");
 
-    // }
-
+    }
+    header("Location:../view/inicio.php?error=1");
 }
 else{
    header("Location:../view/inicio.php");

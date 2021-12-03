@@ -15,7 +15,7 @@
     $name=$_FILES['foto']['tmp_name'];
     $date=date('Y-m-d-H-i-s');
     $path="../public/event/{$date}_{$_FILES['foto']['name']}";
-
+    $newpath="../../public/event/{$date}_{$_FILES['foto']['name']}";
 
 
 
@@ -35,7 +35,7 @@
 
     //Preparamos la query
     $stmt=$pdo->prepare("INSERT INTO tbl_events(id_events,nom_events, data_ini_event, data_fi_event, adre_event, desc_event, ubi_event, capac_event, estat_event, foto_event) VALUES (:id_events, :nom_events, :data_ini_event, :data_fi_event, :adre_event, :desc_event, :ubi_event, :capac_event, :estat_event, :foto_event)");
-    if (move_uploaded_file($name, $path)){
+    if (move_uploaded_file($name, $newpath)){
     try{
         if($stmt->execute((array) $evento)){
             header("Location:../../view/inicio.php");

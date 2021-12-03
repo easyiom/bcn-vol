@@ -9,7 +9,7 @@
     try{
         $stmt -> execute();
         $pdo->commit();
-        if($_COOKIE["rol"]=="Usuario"){
+        if($_COOKIE["rol"]=="Responsable"){
             header("Location:../../view/perfil.php");
         }else{
         header("Location:../../view/evento-resonsable.php");}
